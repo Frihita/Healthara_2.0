@@ -954,11 +954,6 @@
             gap: 1rem;
         }
 
-        .cv-emotion-chart {
-            height: 250px;
-            position: relative;
-        }
-
         .cv-stress-meter {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -1148,38 +1143,151 @@
         }
 
         .release-animation {
-            height: 200px;
+            height: 300px;
             position: relative;
             overflow: hidden;
             border-radius: 15px;
             margin: 1rem 0;
             display: none;
+            background: linear-gradient(to bottom, #0B0F19 0%, #1a1f2e 100%);
         }
 
         .release-animation.active {
             display: block;
         }
 
-        .release-text {
+        .burn-text {
             position: absolute;
-            bottom: 20px;
+            bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
             color: var(--text-primary);
             font-size: 1.2rem;
-            opacity: 0;
-            animation: float-up 5s ease-out forwards;
+            padding: 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            max-width: 80%;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
         }
 
-        @keyframes float-up {
+        .burn-text.burning {
+            opacity: 0;
+            animation: burn-text 3s ease-in-out forwards;
+        }
+
+        @keyframes burn-text {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+                color: var(--text-primary);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateX(-50%) translateY(-20px);
+                color: #ff6b35;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-40px);
+                color: #ff4500;
+            }
+        }
+
+        .fire-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: none;
+        }
+
+        .fire-container.active {
+            display: block;
+        }
+
+        .flame {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 40px;
+            background: linear-gradient(to top, #ff4500, #ff8c00, #ffd700);
+            border-radius: 50% 50% 0 0;
+            opacity: 0.8;
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: scaleY(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scaleY(1.2);
+                opacity: 1;
+            }
+        }
+
+        .lantern-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .lantern-container.active {
+            display: block;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            opacity: 0;
+            animation: float-lantern 10s ease-out forwards;
+        }
+
+        @keyframes float-lantern {
             0% {
                 transform: translateX(-50%) translateY(0);
+                opacity: 0;
+            }
+            10% {
+                transform: translateX(-50%) translateY(-50px);
+                opacity: 1;
+            }
+            90% {
+                transform: translateX(-50%) translateY(-250px);
                 opacity: 1;
             }
             100% {
-                transform: translateX(-50%) translateY(-200px);
+                transform: translateX(-50%) translateY(-300px);
                 opacity: 0;
             }
+        }
+
+        .lantern-body {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, rgba(255, 140, 0, 0.6) 70%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .lantern-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(255, 255, 200, 0.9) 0%, rgba(255, 215, 0, 0.7) 70%);
+            border-radius: 50%;
         }
 
         .breathing-animation {
@@ -1276,14 +1384,435 @@
             box-shadow: 0 10px 20px rgba(74, 222, 128, 0.3);
         }
 
-        .ritual-modes {
+        /* CalorieSmart Feature */
+        .caloriesmart-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .calorie-setup {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .calorie-input-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin-bottom: 1rem;
         }
 
-        .ritual-mode {
+        .calorie-input {
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .meal-scanner {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .camera-section {
+            flex: 1;
+        }
+
+        .camera-preview {
+            width: 100%;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .camera-placeholder {
+            font-size: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .meal-input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .scan-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .scan-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .nutrition-section {
+            flex: 1;
+        }
+
+        .calorie-circle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calorie-circle {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .calorie-chart {
+            width: 100%;
+            height: 100%;
+        }
+
+        .calorie-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .calorie-consumed {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .calorie-total {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .nutrition-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .nutrition-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nutrition-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .nutrition-label {
+            color: var(--text-secondary);
+        }
+
+        .nutrition-value {
+            font-weight: 600;
+        }
+
+        .daily-meals {
+            margin-top: 1.5rem;
+        }
+
+        .meal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        .meal-name {
+            font-weight: 500;
+        }
+
+        .meal-calories {
+            color: var(--text-secondary);
+        }
+
+        /* Water Tracker */
+        .water-tracker {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .water-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .water-droplet {
+            width: 150px;
+            height: 200px;
+            position: relative;
+            margin: 1rem 0;
+        }
+
+        .water-droplet svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .water-fill {
+            fill: #06b6d4;
+            transition: height 0.5s ease;
+        }
+
+        .water-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .water-btn {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(90deg, #06b6d4 0%, #22d3ee 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .water-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .water-info {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .water-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #06b6d4;
+        }
+
+        /* Recipe Generator */
+        .recipe-generator {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ingredients-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .ingredient-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .ingredient-checkbox:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .ingredient-checkbox input {
+            accent-color: var(--accent);
+        }
+
+        .craving-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .craving-select {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .recipe-result {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .recipe-result.active {
+            display: block;
+        }
+
+        .recipe-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .recipe-ingredients {
+            margin-bottom: 1rem;
+        }
+
+        .recipe-ingredients h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .recipe-ingredients ul {
+            padding-left: 1.5rem;
+        }
+
+        .recipe-instructions {
+            margin-bottom: 1rem;
+        }
+
+        .recipe-instructions h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .recipe-instructions ol {
+            padding-left: 1.5rem;
+        }
+
+        .recipe-nutrition {
+            margin-bottom: 1rem;
+        }
+
+        .recipe-nutrition h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .health-score {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .score-badge {
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Posture Tracker */
+        .posture-tracker {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .posture-camera {
+            width: 100%;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--purple);
+        }
+
+        .posture-status {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            width: 100%;
+        }
+
+        .posture-status.good {
+            color: var(--success);
+        }
+
+        .posture-status.bad {
+            color: var(--danger);
+        }
+
+        /* Daily Wellness Check */
+        .wellness-check {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .wellness-questions {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .question-card {
+            margin-bottom: 1.5rem;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .answer-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .answer-btn {
             padding: 0.5rem 1rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
@@ -1293,13 +1822,1312 @@
             transition: var(--transition);
         }
 
-        .ritual-mode:hover {
+        .answer-btn:hover {
             background: rgba(255, 255, 255, 0.1);
         }
 
-        .ritual-mode.active {
+        .answer-btn.selected {
             background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
             border-color: transparent;
+        }
+
+        .wellness-report {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .wellness-report.active {
+            display: block;
+        }
+
+        .report-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .report-score {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--success) 0% 70%,
+                var(--warning) 70% 90%,
+                var(--danger) 90% 100%
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .score-inner {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .score-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .report-recommendations {
+            margin-top: 1.5rem;
+        }
+
+        .report-recommendations h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .recommendation-list {
+            padding-left: 1.5rem;
+        }
+
+        .recommendation-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Know About Me */
+        .about-me {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-me-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-field label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-field input, .form-field textarea {
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .save-profile-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .save-profile-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .about-me-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .about-me-card.active {
+            display: block;
+        }
+
+        .about-me-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .about-me-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .about-me-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .about-me-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .about-me-value {
+            font-weight: 500;
+        }
+
+        /* Mind Garden */
+        .mind-garden {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .garden-container {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(to bottom, #87CEEB 0%, #98D98E 60%, #7CB342 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .garden-ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to bottom, #7CB342 0%, #689F38 100%);
+        }
+
+        .deed-input-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .deed-input {
+            flex: 1;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .add-deed-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-deed-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        .flower {
+            position: absolute;
+            bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: grow-flower 2s ease-out;
+        }
+
+        @keyframes grow-flower {
+            0% {
+                transform: scale(0) translateY(20px);
+                opacity: 0;
+            }
+            20% {
+                transform: scale(0.3) translateY(15px);
+                opacity: 0.3;
+            }
+            40% {
+                transform: scale(0.6) translateY(10px);
+                opacity: 0.6;
+            }
+            60% {
+                transform: scale(0.8) translateY(5px);
+                opacity: 0.8;
+            }
+            80% {
+                transform: scale(0.95) translateY(2px);
+                opacity: 0.95;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .flower:hover {
+            transform: scale(1.1);
+        }
+
+        .flower-stem {
+            width: 4px;
+            height: 60px;
+            background: linear-gradient(to top, #4CAF50, #8BC34A);
+            border-radius: 2px;
+            animation: grow-stem 1.5s ease-out;
+        }
+
+        @keyframes grow-stem {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 60px;
+            }
+        }
+
+        .flower-head {
+            font-size: 2.5rem;
+            margin-top: -10px;
+            animation: bloom-flower 1s ease-out 0.5s both;
+        }
+
+        @keyframes bloom-flower {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        .flower-tooltip {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 10;
+            max-width: 200px;
+            text-align: center;
+        }
+
+        .flower:hover .flower-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Daily Affirmation */
+        .daily-affirmation {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .affirmation-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .refresh-affirmation-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .refresh-affirmation-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mindful Hub */
+        .mindful-hub {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .meditation-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .meditation-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .meditation-tracks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .meditation-track {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .meditation-track:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .track-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .track-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .track-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .play-btn {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .breathing-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .breathing-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .breathing-animation {
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .breathing-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 46, 181, 0.3) 0%, rgba(168, 85, 247, 0.1) 70%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .breathing-circle.inhale {
+            animation: inhale 4s ease-in-out infinite;
+        }
+
+        .breathing-circle.hold {
+            animation: hold 4s ease-in-out infinite;
+        }
+
+        .breathing-circle.exhale {
+            animation: exhale 4s ease-in-out infinite;
+        }
+
+        @keyframes inhale {
+            0% {
+                transform: scale(0.8);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes hold {
+            0% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes exhale {
+            0% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(0.8);
+            }
+        }
+
+        .breathing-modes {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .breathing-mode {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .breathing-mode:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .breathing-mode.active {
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border-color: transparent;
+        }
+
+        .breathing-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .breathing-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .breathing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .breathing-result {
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .breathing-result.active {
+            display: block;
+        }
+
+        .breathing-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Mood Journal */
+        .mood-journal {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mood-selector {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1rem;
+        }
+
+        .mood-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mood-option:hover {
+            transform: scale(1.1);
+        }
+
+        .mood-option.selected {
+            transform: scale(1.2);
+        }
+
+        .mood-emoji {
+            font-size: 2rem;
+        }
+
+        .mood-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .journal-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .journal-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .media-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .media-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .media-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .save-journal-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .save-journal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .download-journal-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .download-journal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        /* Mind Assessment */
+        .mind-assessment {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .assessment-questions {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .assessment-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .assessment-question-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .assessment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .assessment-option {
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .assessment-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .assessment-option.selected {
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border-color: transparent;
+        }
+
+        .submit-assessment-btn {
+            padding: 1rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-assessment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .assessment-result {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .assessment-result.active {
+            display: block;
+        }
+
+        .result-score {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .result-advice {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .result-recommendations {
+            margin-top: 1.5rem;
+        }
+
+        .result-recommendations h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .recommendation-list {
+            padding-left: 1.5rem;
+        }
+
+        .recommendation-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Health Card Tab */
+        .health-card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .health-card-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .health-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .health-card-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-field label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-field input, .form-field select {
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        /* Fixed dropdown styles */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23b8c1ec' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+
+        select option {
+            background-color: var(--bg-secondary);
+            color: #000000; /* Black text for dropdown options */
+        }
+
+        .generate-card-btn {
+            padding: 0.8rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .generate-card-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .download-card-btn {
+            padding: 0.8rem;
+            background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .download-card-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        .generated-card {
+            background: white;
+            color: #1a1f2e;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generated-card.active {
+            display: block;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-date {
+            color: #5a6785;
+            font-size: 0.9rem;
+        }
+
+        .card-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-info-label {
+            color: #5a6785;
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-info-value {
+            font-weight: 600;
+        }
+
+        .card-bmi {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 46, 181, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bmi-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FF2EB5;
+        }
+
+        .bmi-category {
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Reports Section */
+        .reports-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .report-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .report-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .report-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* pH Test Report */
+        .ph-meter {
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(90deg, #f87171 0%, #fbbf24 50%, #4ade80 100%);
+            border-radius: 15px;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .ph-indicator {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 50px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: left 1s ease;
+        }
+
+        .ph-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .ph-value {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .ph-suggestion {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Saved Reports */
+        .saved-reports {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .saved-reports-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reports-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .report-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .report-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .report-info {
+            flex: 1;
+        }
+
+        .report-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .view-report-btn, .download-report-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .view-report-btn:hover, .download-report-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Settings Tab */
+        .settings-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .settings-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .settings-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .settings-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .settings-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .settings-option:last-child {
+            border-bottom: none;
+        }
+
+        .settings-label {
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active {
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 2.5px;
+            left: 2.5px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(25px);
+        }
+
+        .settings-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .settings-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .settings-btn.danger {
+            background: linear-gradient(90deg, #f87171 0%, #ef4444 100%);
+        }
+
+        .settings-btn.danger:hover {
+            box-shadow: 0 10px 20px rgba(248, 113, 113, 0.3);
+        }
+
+        /* File upload styling */
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .file-upload-label:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toast {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 300px;
+            border: 1px solid var(--glass-border);
+            animation: slide-in 0.3s ease-out;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast-message {
+            flex: 1;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1rem;
         }
 
         /* Responsive Design */
@@ -1312,7 +3140,7 @@
                 font-size: 1.2rem;
             }
 
-            .cv-insight-content {
+            .meal-scanner {
                 flex-direction: column;
             }
 
@@ -1939,10 +3767,6 @@
                     </div>
                     
                     <div class="cv-analysis-section">
-                        <div class="cv-emotion-chart">
-                            <canvas id="emotionChart"></canvas>
-                        </div>
-                        
                         <div class="cv-stress-meter">
                             <h4 class="stress-meter-title">Stress Level</h4>
                             <div class="stress-bar-container">
@@ -2010,27 +3834,21 @@
                     </div>
                 </div>
                 
-                <div class="ritual-step">
-                    <div class="ritual-step-title">
-                        <div class="ritual-step-number">2</div>
-                        <span>Release Mode</span>
-                    </div>
-                    <div class="ritual-modes">
-                        <button class="ritual-mode active" data-mode="float">Float Away ☁️</button>
-                        <button class="ritual-mode" data-mode="burn">Burn & Release 🔥</button>
-                        <button class="ritual-mode" data-mode="glow">Glow Up ✨</button>
-                    </div>
-                </div>
-                
                 <button class="release-btn" id="releaseBtn">Release It 🌬️</button>
                 
                 <div class="release-animation" id="releaseAnimation">
-                    <div class="release-text" id="releaseText"></div>
+                    <div class="burn-text" id="burnText"></div>
+                    <div class="fire-container" id="fireContainer">
+                        <!-- Fire flames will be added here -->
+                    </div>
+                    <div class="lantern-container" id="lanternContainer">
+                        <!-- Lanterns will be added here -->
+                    </div>
                 </div>
                 
                 <div class="ritual-step" id="breathingStep" style="display: none;">
                     <div class="ritual-step-title">
-                        <div class="ritual-step-number">3</div>
+                        <div class="ritual-step-number">2</div>
                         <span>Breathing Exercise</span>
                     </div>
                     <div class="breathing-animation">
@@ -2040,7 +3858,7 @@
                 
                 <div class="ritual-step" id="affirmationStep" style="display: none;">
                     <div class="ritual-step-title">
-                        <div class="ritual-step-number">4</div>
+                        <div class="ritual-step-number">3</div>
                         <span>Reflective Moment</span>
                     </div>
                     <div class="affirmation-text" id="affirmationText">
@@ -2050,7 +3868,7 @@
                 
                 <div class="ritual-step" id="moodAfterStep" style="display: none;">
                     <div class="ritual-step-title">
-                        <div class="ritual-step-number">5</div>
+                        <div class="ritual-step-number">4</div>
                         <span>Mood Tracking</span>
                     </div>
                     <p>How do you feel now?</p>
@@ -3270,114 +5088,12 @@
             const stopCvBtn = document.getElementById('stopCvBtn');
             const cvSnapshotBtn = document.getElementById('cvSnapshotBtn');
             const cvCameraPreview = document.getElementById('cvCameraPreview');
-            const emotionChart = document.getElementById('emotionChart');
             const stressIndicator = document.getElementById('stressIndicator');
             const stressValue = document.getElementById('stressValue');
             const currentMood = document.getElementById('currentMood');
             
             let video;
-            let emotionChartInstance;
             let detectionInterval;
-            
-            // Initialize emotion chart
-            if (emotionChart) {
-                const ctx = emotionChart.getContext('2d');
-                emotionChartInstance = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: [],
-                        datasets: [
-                            {
-                                label: 'Happy',
-                                data: [],
-                                borderColor: '#FFD700',
-                                backgroundColor: 'rgba(255, 215, 0, 0.1)',
-                                tension: 0.4,
-                                fill: false
-                            },
-                            {
-                                label: 'Sad',
-                                data: [],
-                                borderColor: '#4169E1',
-                                backgroundColor: 'rgba(65, 105, 225, 0.1)',
-                                tension: 0.4,
-                                fill: false
-                            },
-                            {
-                                label: 'Angry',
-                                data: [],
-                                borderColor: '#DC143C',
-                                backgroundColor: 'rgba(220, 20, 60, 0.1)',
-                                tension: 0.4,
-                                fill: false
-                            },
-                            {
-                                label: 'Fearful',
-                                data: [],
-                                borderColor: '#8B008B',
-                                backgroundColor: 'rgba(139, 0, 139, 0.1)',
-                                tension: 0.4,
-                                fill: false
-                            },
-                            {
-                                label: 'Disgusted',
-                                data: [],
-                                borderColor: '#228B22',
-                                backgroundColor: 'rgba(34, 139, 34, 0.1)',
-                                tension: 0.4,
-                                fill: false
-                            },
-                            {
-                                label: 'Surprised',
-                                data: [],
-                                borderColor: '#FF8C00',
-                                backgroundColor: 'rgba(255, 140, 0, 0.1)',
-                                tension: 0.4,
-                                fill: false
-                            },
-                            {
-                                label: 'Neutral',
-                                data: [],
-                                borderColor: '#808080',
-                                backgroundColor: 'rgba(128, 128, 128, 0.1)',
-                                tension: 0.4,
-                                fill: false
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 1,
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)'
-                                },
-                                ticks: {
-                                    color: '#b8c1ec'
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)'
-                                },
-                                ticks: {
-                                    color: '#b8c1ec'
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: '#b8c1ec'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
             
             // Start CV detection
             if (startCvBtn) {
@@ -3446,7 +5162,7 @@
                                     appState.cvInsight.currentMood = maxExpression;
                                     
                                     // Update UI
-                                    updateCVInsightUI(emotionChartInstance, stressIndicator, stressValue, currentMood);
+                                    updateCVInsightUI(stressIndicator, stressValue, currentMood);
                                 }
                             } catch (error) {
                                 console.error('Detection error:', error);
@@ -3512,31 +5228,7 @@
             }
         }
 
-        function updateCVInsightUI(chart, stressIndicator, stressValue, currentMood) {
-            // Update emotion chart
-            if (chart) {
-                const now = new Date();
-                const timeLabel = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-                
-                // Add new data point
-                chart.data.labels.push(timeLabel);
-                chart.data.datasets[0].data.push(appState.cvInsight.emotionData.happy);
-                chart.data.datasets[1].data.push(appState.cvInsight.emotionData.sad);
-                chart.data.datasets[2].data.push(appState.cvInsight.emotionData.angry);
-                chart.data.datasets[3].data.push(appState.cvInsight.emotionData.fearful);
-                chart.data.datasets[4].data.push(appState.cvInsight.emotionData.disgusted);
-                chart.data.datasets[5].data.push(appState.cvInsight.emotionData.surprised);
-                chart.data.datasets[6].data.push(appState.cvInsight.emotionData.neutral);
-                
-                // Keep only last 20 data points
-                if (chart.data.labels.length > 20) {
-                    chart.data.labels.shift();
-                    chart.data.datasets.forEach(dataset => dataset.data.shift());
-                }
-                
-                chart.update('none'); // Update without animation for smooth real-time display
-            }
-            
+        function updateCVInsightUI(stressIndicator, stressValue, currentMood) {
             // Update stress indicator
             if (stressIndicator) {
                 stressIndicator.style.left = `${appState.cvInsight.stressLevel}%`;
@@ -3588,10 +5280,11 @@
         function initReleasingRitual() {
             const emotionInput = document.getElementById('emotionInput');
             const moodOptions = document.querySelectorAll('.mood-option');
-            const ritualModes = document.querySelectorAll('.ritual-mode');
             const releaseBtn = document.getElementById('releaseBtn');
             const releaseAnimation = document.getElementById('releaseAnimation');
-            const releaseText = document.getElementById('releaseText');
+            const burnText = document.getElementById('burnText');
+            const fireContainer = document.getElementById('fireContainer');
+            const lanternContainer = document.getElementById('lanternContainer');
             const breathingStep = document.getElementById('breathingStep');
             const affirmationStep = document.getElementById('affirmationStep');
             const affirmationText = document.getElementById('affirmationText');
@@ -3600,7 +5293,6 @@
             const moodAfterBtns = document.querySelectorAll('.mood-emoji-btn');
             
             let selectedMood = null;
-            let selectedMode = 'float';
             let beforeMood = null;
             let afterMood = null;
             
@@ -3611,16 +5303,6 @@
                     option.classList.add('selected');
                     selectedMood = option.dataset.mood;
                     appState.releasingRitual.emotion = selectedMood;
-                });
-            });
-            
-            // Ritual mode selection
-            ritualModes.forEach(mode => {
-                mode.addEventListener('click', () => {
-                    ritualModes.forEach(m => m.classList.remove('active'));
-                    mode.classList.add('active');
-                    selectedMode = mode.dataset.mode;
-                    appState.releasingRitual.mode = selectedMode;
                 });
             });
             
@@ -3645,19 +5327,23 @@
                     
                     // Show release animation
                     releaseAnimation.classList.add('active');
-                    releaseText.textContent = text;
+                    burnText.textContent = text;
                     
-                    // Apply animation based on selected mode
-                    if (selectedMode === 'float') {
-                        releaseAnimation.style.background = 'linear-gradient(to bottom, rgba(135, 206, 235, 0.2), rgba(135, 206, 235, 0))';
-                        releaseText.style.animation = 'float-up 5s ease-out forwards';
-                    } else if (selectedMode === 'burn') {
-                        releaseAnimation.style.background = 'linear-gradient(to bottom, rgba(255, 140, 0, 0.2), rgba(255, 69, 0, 0))';
-                        releaseText.style.animation = 'burn-away 5s ease-out forwards';
-                    } else if (selectedMode === 'glow') {
-                        releaseAnimation.style.background = 'linear-gradient(to bottom, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0))';
-                        releaseText.style.animation = 'glow-up 5s ease-out forwards';
-                    }
+                    // Start burning animation
+                    setTimeout(() => {
+                        burnText.classList.add('burning');
+                        
+                        // Create fire flames
+                        createFireFlames(fireContainer);
+                        fireContainer.classList.add('active');
+                    }, 500);
+                    
+                    // After burning, show lanterns
+                    setTimeout(() => {
+                        fireContainer.classList.remove('active');
+                        createFloatingLanterns(lanternContainer);
+                        lanternContainer.classList.add('active');
+                    }, 3000);
                     
                     // Show breathing step after animation starts
                     setTimeout(() => {
@@ -3728,7 +5414,6 @@
                         date: new Date().toISOString(),
                         text: appState.releasingRitual.text,
                         emotion: appState.releasingRitual.emotion,
-                        mode: appState.releasingRitual.mode,
                         beforeMood: beforeMood,
                         afterMood: afterMood
                     };
@@ -3755,46 +5440,44 @@
             }
         }
 
-        // Add custom animations for different release modes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes burn-away {
-                0% {
-                    transform: translateX(-50%) translateY(0);
-                    opacity: 1;
-                    color: var(--text-primary);
-                }
-                50% {
-                    transform: translateX(-50%) translateY(-50px);
-                    opacity: 0.8;
-                    color: #ff6b35;
-                }
-                100% {
-                    transform: translateX(-50%) translateY(-100px);
-                    opacity: 0;
-                    color: #ff4500;
-                }
-            }
+        function createFireFlames(container) {
+            // Clear existing flames
+            container.innerHTML = '';
             
-            @keyframes glow-up {
-                0% {
-                    transform: translateX(-50%) translateY(0);
-                    opacity: 1;
-                    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-                }
-                50% {
-                    transform: translateX(-50%) translateY(-50px);
-                    opacity: 0.8;
-                    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-                }
-                100% {
-                    transform: translateX(-50%) translateY(-100px);
-                    opacity: 0;
-                    text-shadow: 0 0 30px rgba(255, 215, 0, 1);
-                }
+            // Create multiple flames
+            for (let i = 0; i < 15; i++) {
+                const flame = document.createElement('div');
+                flame.className = 'flame';
+                flame.style.left = `${10 + Math.random() * 80}%`;
+                flame.style.height = `${20 + Math.random() * 30}px`;
+                flame.style.width = `${10 + Math.random() * 15}px`;
+                flame.style.animationDelay = `${Math.random() * 0.5}s`;
+                container.appendChild(flame);
             }
-        `;
-        document.head.appendChild(style);
+        }
+
+        function createFloatingLanterns(container) {
+            // Clear existing lanterns
+            container.innerHTML = '';
+            
+            // Create multiple lanterns
+            for (let i = 0; i < 5; i++) {
+                const lantern = document.createElement('div');
+                lantern.className = 'lantern';
+                lantern.style.left = `${15 + i * 15}%`;
+                lantern.style.animationDelay = `${i * 0.5}s`;
+                
+                const lanternBody = document.createElement('div');
+                lanternBody.className = 'lantern-body';
+                
+                const lanternGlow = document.createElement('div');
+                lanternGlow.className = 'lantern-glow';
+                
+                lanternBody.appendChild(lanternGlow);
+                lantern.appendChild(lanternBody);
+                container.appendChild(lantern);
+            }
+        }
 
         // Mindful Hub Feature
         function initMindfulHub() {
