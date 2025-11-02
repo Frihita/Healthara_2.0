@@ -155,7 +155,7 @@
 
         .auth-card {
             width: 90%;
-            max-width: 400px;
+            max-width: 450px;
             padding: 2.5rem;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -192,6 +192,45 @@
             color: transparent;
         }
 
+        /* Auth Tabs */
+        .auth-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 0.8rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 10px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .auth-tab.active {
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            color: white;
+        }
+
+        .auth-tab:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        /* Auth Forms */
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -218,6 +257,17 @@
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(255, 46, 181, 0.2);
+        }
+
+        .form-group .generated-email {
+            background: rgba(255, 46, 181, 0.1);
+            border-color: var(--accent);
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            text-align: center;
         }
 
         .form-options {
@@ -1157,6 +1207,15 @@
 
         .recipe-instructions ol {
             padding-left: 1.5rem;
+        }
+
+        .recipe-nutrition {
+            margin-bottom: 1rem;
+        }
+
+        .recipe-nutrition h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
         }
 
         .health-score {
@@ -2597,6 +2656,10 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+
+            .auth-card {
+                max-width: 400px;
+            }
         }
     </style>
 </head>
@@ -2619,14 +2682,22 @@
                 <i class="fas fa-moon"></i>
             </button>
             <h2 class="auth-title">Welcome to Healthara</h2>
-            <form id="authForm">
+            
+            <!-- Auth Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-auth="login">Login</button>
+                <button class="auth-tab" data-auth="signup">Sign Up</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form class="auth-form active" id="loginForm">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" placeholder="Enter your username" required>
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
                 </div>
                 <div class="form-options">
                     <div class="remember-me">
@@ -2635,8 +2706,33 @@
                     </div>
                     <a href="#" class="forgot-password">Forgot Password?</a>
                 </div>
-                <button type="submit" class="btn">Sign In</button>
+                <button type="submit" class="btn">Login</button>
                 <button type="button" class="btn btn-secondary" id="guestLoginBtn">Login as Guest</button>
+            </form>
+            
+            <!-- Signup Form -->
+            <form class="auth-form" id="signupForm">
+                <div class="form-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" placeholder="Choose a username" required>
+                    <div class="generated-email" id="generatedEmail" style="display: none;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="agreeTerms">
+                        <label for="agreeTerms">I agree to the terms and conditions</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <button type="button" class="btn btn-secondary" id="guestSignupBtn">Login as Guest</button>
             </form>
         </div>
     </div>
@@ -3690,7 +3786,7 @@
             "The first wealth is health. - Ralph Waldo Emerson",
             "Health is a state of complete harmony of the body, mind and spirit. - B.K.S. Iyengar",
             "To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear. - Buddha",
-            "A fit body, a calm mind, a house full of love. These things cannot be bought. They must be earned. - Naval Ravikant",
+            "A fit body, a calm mind, a house full of love. These things cannot be bought. - Naval Ravikant",
             "Physical fitness is the first requisite of happiness. - Joseph Pilates"
         ];
 
@@ -3712,8 +3808,10 @@
         const splashScreen = document.getElementById('splashScreen');
         const authContainer = document.getElementById('authContainer');
         const appContainer = document.getElementById('appContainer');
-        const authForm = document.getElementById('authForm');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
         const guestLoginBtn = document.getElementById('guestLoginBtn');
+        const guestSignupBtn = document.getElementById('guestSignupBtn');
         const themeToggle = document.getElementById('themeToggle');
         const logoutBtn = document.getElementById('logoutBtn');
         const settingsLogoutBtn = document.getElementById('settingsLogoutBtn');
@@ -3739,12 +3837,42 @@
             dailyQuote.textContent = randomQuote;
 
             // Event Listeners
-            authForm.addEventListener('submit', handleAuth);
+            loginForm.addEventListener('submit', handleLogin);
+            signupForm.addEventListener('submit', handleSignup);
             guestLoginBtn.addEventListener('click', handleGuestLogin);
+            guestSignupBtn.addEventListener('click', handleGuestLogin);
             themeToggle.addEventListener('click', toggleTheme);
             logoutBtn.addEventListener('click', handleLogout);
             settingsLogoutBtn.addEventListener('click', handleLogout);
             
+            // Auth tabs
+            document.querySelectorAll('.auth-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const authType = tab.dataset.auth;
+                    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.getElementById(`${authType}Form`).classList.add('active');
+                });
+            });
+
+            // Username input for signup - auto-generate email
+            const signupUsername = document.getElementById('signupUsername');
+            const generatedEmail = document.getElementById('generatedEmail');
+            
+            if (signupUsername && generatedEmail) {
+                signupUsername.addEventListener('input', (e) => {
+                    const username = e.target.value.trim();
+                    if (username) {
+                        const email = `${username}@email.com`;
+                        generatedEmail.textContent = `Your email will be: ${email}`;
+                        generatedEmail.style.display = 'block';
+                    } else {
+                        generatedEmail.style.display = 'none';
+                    }
+                });
+            }
+
             // Navigation
             navTabs.forEach(tab => {
                 tab.addEventListener('click', () => switchTab(tab.dataset.tab));
@@ -3820,23 +3948,106 @@
             setupReminders();
         }
 
-        // Authentication
-        function handleAuth(e) {
+        // Authentication Functions
+        function handleLogin(e) {
             e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
             
-            // Auto-generate email from username
-            const email = `${username}@gmail.com`;
+            // Check if user exists in localStorage
+            const userData = localStorage.getItem(`healthara_${email}`);
             
-            // Format username for display
+            if (userData) {
+                const user = JSON.parse(userData);
+                
+                // Verify password (in a real app, you'd use proper password hashing)
+                if (user.password === password) {
+                    // Set user state
+                    appState.user = {
+                        email: email,
+                        name: user.name,
+                        username: user.username
+                    };
+                    
+                    // Update UI
+                    userName.textContent = user.name;
+                    userAvatar.textContent = user.name.charAt(0).toUpperCase();
+                    greetingName.textContent = user.name;
+                    
+                    // Load user data
+                    loadUserData();
+                    
+                    // Switch to app
+                    authContainer.classList.remove('active');
+                    appContainer.classList.add('active');
+                    
+                    // Show welcome toast
+                    showToast(`Welcome back, ${user.name}!`, 'success');
+                } else {
+                    showToast('Invalid email or password', 'error');
+                }
+            } else {
+                showToast('No account found with this email. Please sign up first.', 'error');
+            }
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const username = document.getElementById('signupUsername').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            
+            // Validation
+            if (!username) {
+                showToast('Please enter a username', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showToast('Password must be at least 6 characters', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match', 'error');
+                return;
+            }
+            
+            if (!agreeTerms) {
+                showToast('Please agree to the terms and conditions', 'error');
+                return;
+            }
+            
+            // Generate email
+            const email = `${username}@email.com`;
+            
+            // Check if user already exists
+            const existingUser = localStorage.getItem(`healthara_${email}`);
+            if (existingUser) {
+                showToast('An account with this username already exists', 'error');
+                return;
+            }
+            
+            // Create user account
             const formattedName = username.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            
+            const userAccount = {
+                email: email,
+                username: username,
+                name: formattedName,
+                password: password, // In a real app, this should be hashed
+                createdAt: new Date().toISOString()
+            };
+            
+            // Save user account
+            localStorage.setItem(`healthara_${email}`, JSON.stringify(userAccount));
             
             // Set user state
             appState.user = {
-                username,
-                email,
-                name: formattedName
+                email: email,
+                name: formattedName,
+                username: username
             };
             
             // Update UI
@@ -3844,23 +4055,23 @@
             userAvatar.textContent = formattedName.charAt(0).toUpperCase();
             greetingName.textContent = formattedName;
             
-            // Save user data
-            saveUserData();
+            // Initialize user data
+            initializeUserData();
             
             // Switch to app
             authContainer.classList.remove('active');
             appContainer.classList.add('active');
             
             // Show welcome toast
-            showToast(`Welcome back, ${formattedName}!`, 'success');
+            showToast(`Account created successfully! Welcome, ${formattedName}!`, 'success');
         }
 
         function handleGuestLogin() {
             // Set guest user state
             appState.user = {
-                username: 'Guest',
-                email: 'guest@gmail.com',
-                name: 'Guest User'
+                email: 'guest',
+                name: 'Guest User',
+                username: 'Guest'
             };
             
             // Update UI
@@ -3884,8 +4095,11 @@
             appState.user = null;
             appContainer.classList.remove('active');
             authContainer.classList.add('active');
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
+            
+            // Reset forms
+            loginForm.reset();
+            signupForm.reset();
+            document.getElementById('generatedEmail').style.display = 'none';
             
             // Show logout toast
             showToast('You have been logged out', 'info');
@@ -5847,8 +6061,44 @@
         }
 
         // Data Persistence
+        function initializeUserData() {
+            if (appState.user && appState.user.email !== 'guest') {
+                const userData = {
+                    user: appState.user,
+                    gardenFlowers: [],
+                    dailyMeals: [],
+                    nutritionData: {
+                        calories: 0,
+                        proteins: 0,
+                        carbs: 0,
+                        fats: 0,
+                        sugar: 0
+                    },
+                    consumedCalories: 0,
+                    dailyCalorieGoal: 2000,
+                    journalEntries: [],
+                    waterIntake: 0,
+                    badges: {
+                        calmStreak: true,
+                        stepChamp: false,
+                        moodMaster: true,
+                        hydrationHero: false
+                    },
+                    notifications: {
+                        water: true,
+                        mood: true,
+                        meal: true
+                    },
+                    profileData: {},
+                    savedReports: []
+                };
+                
+                localStorage.setItem(`healthara_${appState.user.email}`, JSON.stringify(userData));
+            }
+        }
+
         function saveUserData() {
-            if (appState.user && appState.user.username !== 'Guest') {
+            if (appState.user && appState.user.email !== 'guest') {
                 const userData = {
                     user: appState.user,
                     gardenFlowers: appState.gardenFlowers,
@@ -5864,13 +6114,13 @@
                     savedReports: appState.savedReports
                 };
                 
-                localStorage.setItem(`healthara_${appState.user.username}`, JSON.stringify(userData));
+                localStorage.setItem(`healthara_${appState.user.email}`, JSON.stringify(userData));
             }
         }
 
         function loadUserData() {
-            if (appState.user && appState.user.username !== 'Guest') {
-                const savedData = localStorage.getItem(`healthara_${appState.user.username}`);
+            if (appState.user && appState.user.email !== 'guest') {
+                const savedData = localStorage.getItem(`healthara_${appState.user.email}`);
                 if (savedData) {
                     const userData = JSON.parse(savedData);
                     
