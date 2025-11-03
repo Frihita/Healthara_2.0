@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/11/02/15/20251102150649-Q4UJ24LP.js" defer></script>
+    <!-- Add face-api.js for emotion detection -->
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <style>
         :root {
             --bg-primary: #0B0F19;
@@ -873,6 +873,517 @@
             color: transparent;
         }
 
+        /* CV-Insight Feature */
+        .cv-insight-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .cv-insight-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .cv-insight-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-insight-content {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-camera-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cv-camera-preview {
+            width: 100%;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cv-camera-placeholder {
+            font-size: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .cv-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cv-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cv-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .cv-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .cv-analysis-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cv-stress-meter {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stress-meter-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .stress-bar-container {
+            height: 30px;
+            background: linear-gradient(90deg, #4ade80 0%, #fbbf24 50%, #f87171 100%);
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .stress-indicator {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 50px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .stress-labels {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .stress-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .stress-value.low {
+            color: var(--success);
+        }
+
+        .stress-value.medium {
+            color: var(--warning);
+        }
+
+        .stress-value.high {
+            color: var(--danger);
+        }
+
+        .cv-current-mood {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .cv-snapshot-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .cv-snapshot-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        /* Releasing Ritual Feature */
+        .releasing-ritual-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ritual-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .ritual-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .ritual-step {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ritual-step-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ritual-step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .emotion-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+
+        .mood-selector {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1rem;
+        }
+
+        .mood-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mood-option:hover {
+            transform: scale(1.1);
+        }
+
+        .mood-option.selected {
+            transform: scale(1.2);
+        }
+
+        .mood-emoji {
+            font-size: 2rem;
+        }
+
+        .mood-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .release-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .release-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+        }
+
+        .release-animation {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin: 1rem 0;
+            display: none;
+            background: linear-gradient(to bottom, #0B0F19 0%, #1a1f2e 100%);
+        }
+
+        .release-animation.active {
+            display: block;
+        }
+
+        .burn-text {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            max-width: 80%;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .burn-text.burning {
+            opacity: 0;
+            animation: burn-text 3s ease-in-out forwards;
+        }
+
+        @keyframes burn-text {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+                color: var(--text-primary);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateX(-50%) translateY(-20px);
+                color: #ff6b35;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-40px);
+                color: #ff4500;
+            }
+        }
+
+        .fire-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            display: none;
+        }
+
+        .fire-container.active {
+            display: block;
+        }
+
+        .flame {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 40px;
+            background: linear-gradient(to top, #ff4500, #ff8c00, #ffd700);
+            border-radius: 50% 50% 0 0;
+            opacity: 0.8;
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: scaleY(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scaleY(1.2);
+                opacity: 1;
+            }
+        }
+
+        .lantern-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .lantern-container.active {
+            display: block;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            opacity: 0;
+            animation: float-lantern 10s ease-out forwards;
+        }
+
+        @keyframes float-lantern {
+            0% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 0;
+            }
+            10% {
+                transform: translateX(-50%) translateY(-50px);
+                opacity: 1;
+            }
+            90% {
+                transform: translateX(-50%) translateY(-250px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) translateY(-300px);
+                opacity: 0;
+            }
+        }
+
+        .lantern-body {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, rgba(255, 140, 0, 0.6) 70%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .lantern-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(255, 255, 200, 0.9) 0%, rgba(255, 215, 0, 0.7) 70%);
+            border-radius: 50%;
+        }
+
+        .breathing-animation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            margin: 1rem 0;
+        }
+
+        .breathing-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 46, 181, 0.3) 0%, rgba(168, 85, 247, 0.1) 70%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 600;
+            animation: breathe 4s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(0.8);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .affirmation-text {
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .mood-after {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .mood-after-label {
+            font-weight: 600;
+        }
+
+        .mood-after-slider {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mood-emoji-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mood-emoji-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .mood-emoji-btn.selected {
+            transform: scale(1.3);
+            filter: drop-shadow(0 0 10px rgba(255, 46, 181, 0.5));
+        }
+
+        .save-ritual-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .save-ritual-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(74, 222, 128, 0.3);
+        }
+
         /* CalorieSmart Feature */
         .caloriesmart-container {
             display: flex;
@@ -1467,7 +1978,6 @@
         .about-me-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            font-weight: 600;
             text-align: center;
         }
 
@@ -2911,12 +3421,19 @@
         <!-- Mental Health Section -->
         <div class="content-section" id="mental">
             <div class="mental-features">
-                <div class="mental-feature" data-feature="aicv">
+                <div class="mental-feature" data-feature="cvinsight">
                     <div class="feature-header">
                         <div class="feature-icon">👁️</div>
-                        <h3 class="feature-title">AI CV Scan</h3>
+                        <h3 class="feature-title">CV-Insight</h3>
                     </div>
-                    <p class="feature-description">Emotion tracking + stress monitor using computer vision</p>
+                    <p class="feature-description">Real-time emotion & stress level detector using webcam</p>
+                </div>
+                <div class="mental-feature" data-feature="releasing">
+                    <div class="feature-header">
+                        <div class="feature-icon">🌬️</div>
+                        <h3 class="feature-title">Releasing Ritual</h3>
+                    </div>
+                    <p class="feature-description">Let it go, glow again with guided emotional release</p>
                 </div>
                 <div class="mental-feature" data-feature="mindful">
                     <div class="feature-header">
@@ -3215,17 +3732,161 @@
     </div>
 
     <!-- Feature Modals -->
-    <!-- AI CV Scan Modal -->
-    <div class="modal" id="aicvModal">
+    <!-- CV-Insight Modal -->
+    <div class="modal" id="cvinsightModal">
         <div class="modal-content">
-            <button class="modal-close" data-modal="aicvModal">
+            <button class="modal-close" data-modal="cvinsightModal">
                 <i class="fas fa-times"></i>
             </button>
-            <h2 class="modal-title">AI CV Scan</h2>
-            <div class="aicv-container">
-                <p>This feature uses computer vision to track your emotions and stress levels.</p>
-                <p>Click the button below to open the AI CV Scan in a new window.</p>
-                <button class="scan-btn" id="openAicvBtn">Open AI CV Scan</button>
+            <h2 class="modal-title">CV-Insight — Real-Time Emotion & Stress Detector</h2>
+            <div class="cv-insight-container">
+                <div class="cv-insight-header">
+                    <h3>Track your emotions in real-time</h3>
+                    <p class="cv-insight-subtitle">Allow camera access to begin emotion detection</p>
+                </div>
+                
+                <div class="cv-insight-content">
+                    <div class="cv-camera-section">
+                        <div class="cv-camera-preview" id="cvCameraPreview">
+                            <div class="cv-camera-placeholder">
+                                <i class="fas fa-video"></i>
+                            </div>
+                        </div>
+                        <div class="cv-controls">
+                            <button class="cv-btn" id="startCvBtn">Start Detection</button>
+                            <button class="cv-btn" id="stopCvBtn" disabled>Stop Detection</button>
+                        </div>
+                        <button class="cv-snapshot-btn" id="cvSnapshotBtn" disabled>📸 Capture Snapshot</button>
+                    </div>
+                    
+                    <div class="cv-analysis-section">
+                        <div class="cv-stress-meter">
+                            <h4 class="stress-meter-title">Stress Level</h4>
+                            <div class="stress-bar-container">
+                                <div class="stress-indicator" id="stressIndicator" style="left: 20%;"></div>
+                            </div>
+                            <div class="stress-labels">
+                                <span>Low</span>
+                                <span>Medium</span>
+                                <span>High</span>
+                            </div>
+                            <div class="stress-value low" id="stressValue">20%</div>
+                        </div>
+                        
+                        <div class="cv-current-mood" id="currentMood">
+                            Current Mood: Neutral 😐
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Releasing Ritual Modal -->
+    <div class="modal" id="releasingModal">
+        <div class="modal-content">
+            <button class="modal-close" data-modal="releasingModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Releasing Ritual — Let It Go, Glow Again ✨</h2>
+            <div class="releasing-ritual-container">
+                <div class="ritual-header">
+                    <h3>Take a moment to release what no longer serves you</h3>
+                    <p class="ritual-subtitle">A guided emotional detox experience</p>
+                </div>
+                
+                <div class="ritual-step">
+                    <div class="ritual-step-title">
+                        <div class="ritual-step-number">1</div>
+                        <span>Emotional Input</span>
+                    </div>
+                    <p>What's been weighing on your mind?</p>
+                    <textarea class="emotion-input" id="emotionInput" placeholder="Express your thoughts and feelings here..."></textarea>
+                    
+                    <div class="mood-selector">
+                        <div class="mood-option" data-mood="sad">
+                            <div class="mood-emoji">😢</div>
+                            <div class="mood-label">Sad</div>
+                        </div>
+                        <div class="mood-option" data-mood="anxious">
+                            <div class="mood-emoji">😰</div>
+                            <div class="mood-label">Anxious</div>
+                        </div>
+                        <div class="mood-option" data-mood="guilty">
+                            <div class="mood-emoji">😔</div>
+                            <div class="mood-label">Guilty</div>
+                        </div>
+                        <div class="mood-option" data-mood="angry">
+                            <div class="mood-emoji">😠</div>
+                            <div class="mood-label">Angry</div>
+                        </div>
+                        <div class="mood-option" data-mood="confused">
+                            <div class="mood-emoji">😕</div>
+                            <div class="mood-label">Confused</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="release-btn" id="releaseBtn">Release It 🌬️</button>
+                
+                <div class="release-animation" id="releaseAnimation">
+                    <div class="burn-text" id="burnText"></div>
+                    <div class="fire-container" id="fireContainer">
+                        <!-- Fire flames will be added here -->
+                    </div>
+                    <div class="lantern-container" id="lanternContainer">
+                        <!-- Lanterns will be added here -->
+                    </div>
+                </div>
+                
+                <div class="ritual-step" id="breathingStep" style="display: none;">
+                    <div class="ritual-step-title">
+                        <div class="ritual-step-number">2</div>
+                        <span>Breathing Exercise</span>
+                    </div>
+                    <div class="breathing-animation">
+                        <div class="breathing-circle">Breathe</div>
+                    </div>
+                </div>
+                
+                <div class="ritual-step" id="affirmationStep" style="display: none;">
+                    <div class="ritual-step-title">
+                        <div class="ritual-step-number">3</div>
+                        <span>Reflective Moment</span>
+                    </div>
+                    <div class="affirmation-text" id="affirmationText">
+                        You are allowed to heal at your own pace.
+                    </div>
+                </div>
+                
+                <div class="ritual-step" id="moodAfterStep" style="display: none;">
+                    <div class="ritual-step-title">
+                        <div class="ritual-step-number">4</div>
+                        <span>Mood Tracking</span>
+                    </div>
+                    <p>How do you feel now?</p>
+                    <div class="mood-after">
+                        <span class="mood-after-label">Before:</span>
+                        <div class="mood-after-slider">
+                            <button class="mood-emoji-btn" data-mood="very-sad">😭</button>
+                            <button class="mood-emoji-btn" data-mood="sad">😢</button>
+                            <button class="mood-emoji-btn" data-mood="neutral">😐</button>
+                            <button class="mood-emoji-btn" data-mood="happy">😊</button>
+                            <button class="mood-emoji-btn" data-mood="very-happy">😄</button>
+                        </div>
+                    </div>
+                    <div class="mood-after">
+                        <span class="mood-after-label">After:</span>
+                        <div class="mood-after-slider">
+                            <button class="mood-emoji-btn" data-mood="very-sad">😭</button>
+                            <button class="mood-emoji-btn" data-mood="sad">😢</button>
+                            <button class="mood-emoji-btn" data-mood="neutral">😐</button>
+                            <button class="mood-emoji-btn" data-mood="happy">😊</button>
+                            <button class="mood-emoji-btn" data-mood="very-happy">😄</button>
+                        </div>
+                    </div>
+                    <button class="save-ritual-btn" id="saveRitualBtn">Save Ritual</button>
+                </div>
             </div>
         </div>
     </div>
@@ -3775,7 +4436,29 @@
                 mood: true,
                 meal: true
             },
-            profileData: {}
+            profileData: {},
+            cvInsight: {
+                isDetecting: false,
+                emotionData: {
+                    happy: 0,
+                    sad: 0,
+                    angry: 0,
+                    fearful: 0,
+                    disgusted: 0,
+                    surprised: 0,
+                    neutral: 0
+                },
+                emotionHistory: [],
+                stressLevel: 20,
+                currentMood: 'neutral'
+            },
+            releasingRitual: {
+                beforeMood: null,
+                afterMood: null,
+                emotion: null,
+                text: '',
+                mode: 'float'
+            }
         };
 
         // Daily Quotes
@@ -3805,6 +4488,15 @@
             "You are enough just as you are.",
             "Your health is an investment, not an expense."
         ];
+
+        // Emotion-based affirmations for Releasing Ritual
+        const emotionAffirmations = {
+            sad: "You are allowed to heal at your own pace.",
+            anxious: "This feeling is temporary. You have overcome challenges before.",
+            guilty: "Forgiveness is freedom, not permission.",
+            angry: "Your calm is your power.",
+            confused: "Even in uncertainty, growth is happening."
+        };
 
         // DOM Elements
         const splashScreen = document.getElementById('splashScreen');
@@ -3929,7 +4621,8 @@
             });
 
             // Initialize Feature Modals
-            initAICV();
+            initCVInsight();
+            initReleasingRitual();
             initMindfulHub();
             initMindVault();
             initMindGarden();
@@ -4382,16 +5075,400 @@
             }
         }
 
-        // AI CV Scan Feature
-        function initAICV() {
-            const openAicvBtn = document.getElementById('openAicvBtn');
+        // CV-Insight Feature
+        function initCVInsight() {
+            const startCvBtn = document.getElementById('startCvBtn');
+            const stopCvBtn = document.getElementById('stopCvBtn');
+            const cvSnapshotBtn = document.getElementById('cvSnapshotBtn');
+            const cvCameraPreview = document.getElementById('cvCameraPreview');
+            const stressIndicator = document.getElementById('stressIndicator');
+            const stressValue = document.getElementById('stressValue');
+            const currentMood = document.getElementById('currentMood');
             
-            if (openAicvBtn) {
-                openAicvBtn.addEventListener('click', () => {
-                    // Open AI CV Scan in a new window
-                    window.open('https://example.com/aicv-scan', '_blank');
-                    showToast('Opening AI CV Scan in a new window...', 'info');
+            let video;
+            let detectionInterval;
+            
+            // Start CV detection
+            if (startCvBtn) {
+                startCvBtn.addEventListener('click', async () => {
+                    try {
+                        // Request camera access
+                        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                        
+                        // Create video element
+                        video = document.createElement('video');
+                        video.srcObject = stream;
+                        video.autoplay = true;
+                        video.width = 640;
+                        video.height = 480;
+                        
+                        // Replace placeholder with video
+                        cvCameraPreview.innerHTML = '';
+                        cvCameraPreview.appendChild(video);
+                        
+                        // Load face-api models
+                        showToast('Loading emotion detection models...', 'info');
+                        await faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/model');
+                        await faceapi.nets.faceExpressionNet.loadFromUri('https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/model');
+                        
+                        // Start detection
+                        appState.cvInsight.isDetecting = true;
+                        startCvBtn.disabled = true;
+                        stopCvBtn.disabled = false;
+                        cvSnapshotBtn.disabled = false;
+                        
+                        showToast('Emotion detection started!', 'success');
+                        
+                        // Start detection interval
+                        detectionInterval = setInterval(async () => {
+                            if (!appState.cvInsight.isDetecting) return;
+                            
+                            try {
+                                // Detect faces and expressions
+                                const detections = await faceapi
+                                    .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+                                    .withFaceExpressions();
+                                
+                                if (detections.length > 0) {
+                                    // Get the first face's expressions
+                                    const expressions = detections[0].expressions;
+                                    
+                                    // Update emotion data
+                                    appState.cvInsight.emotionData = {
+                                        happy: expressions.happy,
+                                        sad: expressions.sad,
+                                        angry: expressions.angry,
+                                        fearful: expressions.fearful,
+                                        disgusted: expressions.disgusted,
+                                        surprised: expressions.surprised,
+                                        neutral: expressions.neutral
+                                    };
+                                    
+                                    // Calculate stress level
+                                    const stress = (expressions.sad + expressions.fearful + expressions.angry) - expressions.happy;
+                                    appState.cvInsight.stressLevel = Math.max(0, Math.min(100, stress * 100));
+                                    
+                                    // Determine current mood
+                                    const maxExpression = Object.keys(expressions).reduce((a, b) => 
+                                        expressions[a] > expressions[b] ? a : b
+                                    );
+                                    appState.cvInsight.currentMood = maxExpression;
+                                    
+                                    // Update UI
+                                    updateCVInsightUI(stressIndicator, stressValue, currentMood);
+                                }
+                            } catch (error) {
+                                console.error('Detection error:', error);
+                            }
+                        }, 1000); // Update every second
+                    } catch (error) {
+                        console.error('Camera access error:', error);
+                        showToast('Failed to access camera. Please check permissions.', 'error');
+                    }
                 });
+            }
+            
+            // Stop CV detection
+            if (stopCvBtn) {
+                stopCvBtn.addEventListener('click', () => {
+                    appState.cvInsight.isDetecting = false;
+                    startCvBtn.disabled = false;
+                    stopCvBtn.disabled = true;
+                    cvSnapshotBtn.disabled = true;
+                    
+                    // Stop camera stream
+                    if (video && video.srcObject) {
+                        const tracks = video.srcObject.getTracks();
+                        tracks.forEach(track => track.stop());
+                    }
+                    
+                    // Clear detection interval
+                    if (detectionInterval) {
+                        clearInterval(detectionInterval);
+                    }
+                    
+                    // Reset camera preview
+                    cvCameraPreview.innerHTML = '<div class="cv-camera-placeholder"><i class="fas fa-video"></i></div>';
+                    
+                    showToast('Emotion detection stopped', 'info');
+                });
+            }
+            
+            // Capture snapshot
+            if (cvSnapshotBtn) {
+                cvSnapshotBtn.addEventListener('click', () => {
+                    // Create a canvas to capture the current frame
+                    const canvas = document.createElement('canvas');
+                    canvas.width = video.width;
+                    canvas.height = video.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    
+                    // Convert to data URL and download
+                    canvas.toBlob(blob => {
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `emotion-snapshot-${new Date().toISOString().split('T')[0]}.png`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    });
+                    
+                    showToast('Emotion snapshot captured!', 'success');
+                });
+            }
+        }
+
+        function updateCVInsightUI(stressIndicator, stressValue, currentMood) {
+            // Update stress indicator
+            if (stressIndicator) {
+                stressIndicator.style.left = `${appState.cvInsight.stressLevel}%`;
+            }
+            
+            // Update stress value
+            if (stressValue) {
+                const stressLevel = Math.round(appState.cvInsight.stressLevel);
+                stressValue.textContent = `${stressLevel}%`;
+                
+                // Update color based on stress level
+                stressValue.className = 'stress-value';
+                if (stressLevel < 33) {
+                    stressValue.classList.add('low');
+                } else if (stressLevel < 66) {
+                    stressValue.classList.add('medium');
+                } else {
+                    stressValue.classList.add('high');
+                }
+            }
+            
+            // Update current mood
+            if (currentMood) {
+                const moodEmojis = {
+                    happy: '😊',
+                    sad: '😢',
+                    angry: '😠',
+                    fearful: '😨',
+                    disgusted: '🤢',
+                    surprised: '😲',
+                    neutral: '😐'
+                };
+                
+                const moodLabels = {
+                    happy: 'Happy',
+                    sad: 'Sad',
+                    angry: 'Angry',
+                    fearful: 'Fearful',
+                    disgusted: 'Disgusted',
+                    surprised: 'Surprised',
+                    neutral: 'Neutral'
+                };
+                
+                currentMood.textContent = `Current Mood: ${moodLabels[appState.cvInsight.currentMood]} ${moodEmojis[appState.cvInsight.currentMood]}`;
+            }
+        }
+
+        // Releasing Ritual Feature
+        function initReleasingRitual() {
+            const emotionInput = document.getElementById('emotionInput');
+            const moodOptions = document.querySelectorAll('.mood-option');
+            const releaseBtn = document.getElementById('releaseBtn');
+            const releaseAnimation = document.getElementById('releaseAnimation');
+            const burnText = document.getElementById('burnText');
+            const fireContainer = document.getElementById('fireContainer');
+            const lanternContainer = document.getElementById('lanternContainer');
+            const breathingStep = document.getElementById('breathingStep');
+            const affirmationStep = document.getElementById('affirmationStep');
+            const affirmationText = document.getElementById('affirmationText');
+            const moodAfterStep = document.getElementById('moodAfterStep');
+            const saveRitualBtn = document.getElementById('saveRitualBtn');
+            const moodAfterBtns = document.querySelectorAll('.mood-emoji-btn');
+            
+            let selectedMood = null;
+            let beforeMood = null;
+            let afterMood = null;
+            
+            // Mood selection
+            moodOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    moodOptions.forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                    selectedMood = option.dataset.mood;
+                    appState.releasingRitual.emotion = selectedMood;
+                });
+            });
+            
+            // Release button
+            if (releaseBtn) {
+                releaseBtn.addEventListener('click', () => {
+                    const text = emotionInput.value.trim();
+                    
+                    if (!text) {
+                        showToast('Please express what you want to release', 'warning');
+                        return;
+                    }
+                    
+                    if (!selectedMood) {
+                        showToast('Please select your current mood', 'warning');
+                        return;
+                    }
+                    
+                    // Save the text and mood
+                    appState.releasingRitual.text = text;
+                    appState.releasingRitual.emotion = selectedMood;
+                    
+                    // Show release animation
+                    releaseAnimation.classList.add('active');
+                    burnText.textContent = text;
+                    
+                    // Start burning animation
+                    setTimeout(() => {
+                        burnText.classList.add('burning');
+                        
+                        // Create fire flames
+                        createFireFlames(fireContainer);
+                        fireContainer.classList.add('active');
+                    }, 500);
+                    
+                    // After burning, show lanterns
+                    setTimeout(() => {
+                        fireContainer.classList.remove('active');
+                        createFloatingLanterns(lanternContainer);
+                        lanternContainer.classList.add('active');
+                    }, 3000);
+                    
+                    // Show breathing step after animation starts
+                    setTimeout(() => {
+                        breathingStep.style.display = 'block';
+                    }, 1000);
+                    
+                    // Show affirmation step after breathing
+                    setTimeout(() => {
+                        affirmationStep.style.display = 'block';
+                        
+                        // Set affirmation based on mood
+                        if (emotionAffirmations[selectedMood]) {
+                            affirmationText.textContent = emotionAffirmations[selectedMood];
+                        }
+                    }, 6000);
+                    
+                    // Show mood tracking step
+                    setTimeout(() => {
+                        moodAfterStep.style.display = 'block';
+                    }, 8000);
+                });
+            }
+            
+            // Mood after buttons
+            moodAfterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const moodType = btn.dataset.mood;
+                    const isBefore = btn.parentElement.parentElement.querySelector('.mood-after-label').textContent === 'Before:';
+                    
+                    if (isBefore) {
+                        // Remove previous selection
+                        moodAfterBtns.forEach(b => {
+                            if (b.parentElement.parentElement.querySelector('.mood-after-label').textContent === 'Before:') {
+                                b.classList.remove('selected');
+                            }
+                        });
+                        
+                        // Add selection
+                        btn.classList.add('selected');
+                        beforeMood = moodType;
+                        appState.releasingRitual.beforeMood = beforeMood;
+                    } else {
+                        // Remove previous selection
+                        moodAfterBtns.forEach(b => {
+                            if (b.parentElement.parentElement.querySelector('.mood-after-label').textContent === 'After:') {
+                                b.classList.remove('selected');
+                            }
+                        });
+                        
+                        // Add selection
+                        btn.classList.add('selected');
+                        afterMood = moodType;
+                        appState.releasingRitual.afterMood = afterMood;
+                    }
+                });
+            });
+            
+            // Save ritual button
+            if (saveRitualBtn) {
+                saveRitualBtn.addEventListener('click', () => {
+                    if (!beforeMood || !afterMood) {
+                        showToast('Please select your mood before and after the ritual', 'warning');
+                        return;
+                    }
+                    
+                    // Save ritual data
+                    const ritualData = {
+                        date: new Date().toISOString(),
+                        text: appState.releasingRitual.text,
+                        emotion: appState.releasingRitual.emotion,
+                        beforeMood: beforeMood,
+                        afterMood: afterMood
+                    };
+                    
+                    // Add to saved reports
+                    saveReport('Releasing Ritual', ritualData);
+                    
+                    // Show success message
+                    showToast('Ritual saved successfully! You can view it in Reports.', 'success');
+                    
+                    // Reset form
+                    emotionInput.value = '';
+                    moodOptions.forEach(opt => opt.classList.remove('selected'));
+                    releaseAnimation.classList.remove('active');
+                    breathingStep.style.display = 'none';
+                    affirmationStep.style.display = 'none';
+                    moodAfterStep.style.display = 'none';
+                    moodAfterBtns.forEach(btn => btn.classList.remove('selected'));
+                    
+                    selectedMood = null;
+                    beforeMood = null;
+                    afterMood = null;
+                });
+            }
+        }
+
+        function createFireFlames(container) {
+            // Clear existing flames
+            container.innerHTML = '';
+            
+            // Create multiple flames
+            for (let i = 0; i < 15; i++) {
+                const flame = document.createElement('div');
+                flame.className = 'flame';
+                flame.style.left = `${10 + Math.random() * 80}%`;
+                flame.style.height = `${20 + Math.random() * 30}px`;
+                flame.style.width = `${10 + Math.random() * 15}px`;
+                flame.style.animationDelay = `${Math.random() * 0.5}s`;
+                container.appendChild(flame);
+            }
+        }
+
+        function createFloatingLanterns(container) {
+            // Clear existing lanterns
+            container.innerHTML = '';
+            
+            // Create multiple lanterns
+            for (let i = 0; i < 5; i++) {
+                const lantern = document.createElement('div');
+                lantern.className = 'lantern';
+                lantern.style.left = `${15 + i * 15}%`;
+                lantern.style.animationDelay = `${i * 0.5}s`;
+                
+                const lanternBody = document.createElement('div');
+                lanternBody.className = 'lantern-body';
+                
+                const lanternGlow = document.createElement('div');
+                lanternGlow.className = 'lantern-glow';
+                
+                lanternBody.appendChild(lanternGlow);
+                lantern.appendChild(lanternBody);
+                container.appendChild(lantern);
             }
         }
 
@@ -5948,6 +7025,15 @@
                                 ${report.data.recommendations.map(rec => `<li>${rec}</li>`).join('')}
                             </ul>
                         ` : ''}
+                        ${report.data.beforeMood && report.data.afterMood ? `
+                            <h3>Mood Change:</h3>
+                            <p><strong>Before:</strong> ${report.data.beforeMood}</p>
+                            <p><strong>After:</strong> ${report.data.afterMood}</p>
+                        ` : ''}
+                        ${report.data.text ? `
+                            <h3>Released Thoughts:</h3>
+                            <p>${report.data.text}</p>
+                        ` : ''}
                     </div>
                 </div>
             `;
@@ -5985,6 +7071,18 @@
                     doc.text(`• ${rec}`, 25, yPosition);
                     yPosition += 10;
                 });
+            }
+            
+            if (report.data.beforeMood && report.data.afterMood) {
+                doc.text('Mood Change:', 20, yPosition + 10);
+                doc.text(`Before: ${report.data.beforeMood}`, 25, yPosition + 20);
+                doc.text(`After: ${report.data.afterMood}`, 25, yPosition + 30);
+            }
+            
+            if (report.data.text) {
+                doc.text('Released Thoughts:', 20, yPosition + 40);
+                const splitText = doc.splitTextToSize(report.data.text, 170);
+                doc.text(splitText, 25, yPosition + 50);
             }
             
             // Save PDF
