@@ -16,8 +16,8 @@
         :root {
             --bg-primary: #0B0F19;
             --bg-secondary: #1a1f2e;
-            --accent: #FF2EB5;
-            --accent-light: #ff66d9;
+            --accent: #BC13FE;
+            --accent-light: #dd24a6;
             --purple: #A855F7;
             --text-primary: #ffffff;
             --text-secondary: #b8c1ec;
@@ -78,7 +78,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #A855F7 0%, #FF2EB5 100%);
+            background: linear-gradient(135deg,#dd24a6 0%, #BC13FE 100%);
             opacity: 0.1;
             z-index: -1;
         }
@@ -86,7 +86,7 @@
         .ripple {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 46, 181, 0.3) 0%, rgba(168, 85, 247, 0.1) 70%);
+            background: radial-gradient(circle, rgba(188, 19, 254, 0.3) 0%, rgba(168, 85, 247, 0.1) 70%);
             transform: scale(0);
             animation: ripple-animation 8s infinite ease-out;
         }
@@ -105,21 +105,21 @@
         .logo {
             font-size: 4rem;
             font-weight: 700;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 30px rgba(255, 46, 181, 0.5);
+            text-shadow: 0 0 30px rgba(188, 19, 254, 0.5);
             margin-bottom: 1rem;
             animation: glow 2s ease-in-out infinite alternate;
         }
 
         @keyframes glow {
             from {
-                text-shadow: 0 0 30px rgba(255, 46, 181, 0.5);
+                text-shadow: 0 0 30px rgba(188, 19, 254, 0.5);
             }
             to {
-                text-shadow: 0 0 40px rgba(255, 46, 181, 0.8), 0 0 50px rgba(168, 85, 247, 0.5);
+                text-shadow: 0 0 40px rgba(188, 19, 254, 0.8), 0 0 50px rgba(168, 85, 247, 0.5);
             }
         }
 
@@ -190,7 +190,7 @@
             font-size: 2rem;
             margin-bottom: 1.5rem;
             text-align: center;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -218,7 +218,7 @@
         }
 
         .auth-tab.active {
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             color: white;
         }
 
@@ -260,11 +260,11 @@
         .form-group input:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(255, 46, 181, 0.2);
+            box-shadow: 0 0 0 3px rgba(188, 19, 254, 0.2);
         }
 
         .form-group .generated-email {
-            background: rgba(255, 46, 181, 0.1);
+            background: rgba(188, 19, 254, 0.1);
             border-color: var(--accent);
             color: var(--accent-light);
             font-size: 0.9rem;
@@ -304,7 +304,7 @@
         .btn {
             width: 100%;
             padding: 0.8rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -318,7 +318,7 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .btn:active {
@@ -388,7 +388,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -439,7 +439,7 @@
         }
 
         .nav-tab.active {
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             color: white;
         }
 
@@ -499,7 +499,7 @@
         .dashboard-card-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -529,7 +529,7 @@
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             text-align: center;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -642,7 +642,7 @@
         }
 
         .indicator-icon.completed {
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
         }
 
         .indicator-label {
@@ -712,7 +712,7 @@
         }
 
         .badge.unlocked {
-            background: linear-gradient(135deg, rgba(255, 46, 181, 0.2), rgba(168, 85, 247, 0.2));
+            background: linear-gradient(135deg, rgba(188, 19, 254, 0.2), rgba(168, 85, 247, 0.2));
             border: 1px solid var(--accent);
         }
 
@@ -779,7 +779,7 @@
 
         .feature-icon {
             font-size: 2.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -869,7 +869,7 @@
         .modal-title {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -930,7 +930,7 @@
 
         .cv-btn {
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -941,7 +941,7 @@
 
         .cv-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .cv-btn:disabled {
@@ -1073,7 +1073,7 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1128,7 +1128,7 @@
 
         .release-btn {
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -1141,7 +1141,7 @@
 
         .release-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .release-animation {
@@ -1304,7 +1304,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 46, 181, 0.3) 0%, rgba(168, 85, 247, 0.1) 70%);
+            background: radial-gradient(circle, rgba(188, 19, 254, 0.3) 0%, rgba(168, 85, 247, 0.1) 70%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1365,7 +1365,7 @@
 
         .mood-emoji-btn.selected {
             transform: scale(1.3);
-            filter: drop-shadow(0 0 10px rgba(255, 46, 181, 0.5));
+            filter: drop-shadow(0 0 10px rgba(188, 19, 254, 0.5));
         }
 
         .save-ritual-btn {
@@ -1455,7 +1455,7 @@
 
         .scan-btn {
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -1466,7 +1466,7 @@
 
         .scan-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .nutrition-section {
@@ -1742,7 +1742,7 @@
 
         .score-badge {
             padding: 0.3rem 0.8rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
@@ -1829,7 +1829,7 @@
         }
 
         .answer-btn.selected {
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             border-color: transparent;
         }
 
@@ -1951,7 +1951,7 @@
 
         .save-profile-btn {
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -1963,7 +1963,7 @@
 
         .save-profile-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .about-me-card {
@@ -2247,7 +2247,7 @@
 
         .play-btn {
             padding: 0.5rem 1rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -2258,7 +2258,7 @@
 
         .play-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .breathing-section {
@@ -2284,7 +2284,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 46, 181, 0.3) 0%, rgba(168, 85, 247, 0.1) 70%);
+            background: radial-gradient(circle, rgba(188, 19, 254, 0.3) 0%, rgba(168, 85, 247, 0.1) 70%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -2353,7 +2353,7 @@
         }
 
         .breathing-mode.active {
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border-color: transparent;
         }
 
@@ -2365,7 +2365,7 @@
 
         .breathing-btn {
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -2376,7 +2376,7 @@
 
         .breathing-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .breathing-result {
@@ -2477,7 +2477,7 @@
 
         .save-journal-btn {
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -2488,7 +2488,7 @@
 
         .save-journal-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .download-journal-btn {
@@ -2551,13 +2551,13 @@
         }
 
         .assessment-option.selected {
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border-color: transparent;
         }
 
         .submit-assessment-btn {
             padding: 1rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -2569,7 +2569,7 @@
 
         .submit-assessment-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .assessment-result {
@@ -2588,7 +2588,7 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -2642,7 +2642,7 @@
 
         .health-card-icon {
             font-size: 1.8rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -2692,7 +2692,7 @@
 
         .generate-card-btn {
             padding: 0.8rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -2703,7 +2703,7 @@
 
         .generate-card-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .download-card-btn {
@@ -2748,7 +2748,7 @@
         .card-logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -2785,7 +2785,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 46, 181, 0.1);
+            background: rgba(188, 19, 254, 0.1);
             border-radius: 10px;
             padding: 1rem;
             margin-bottom: 1.5rem;
@@ -2794,12 +2794,12 @@
         .bmi-value {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #FF2EB5;
+            color: #BC13FE;
         }
 
         .bmi-category {
             padding: 0.3rem 0.8rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             border-radius: 20px;
             color: white;
             font-size: 0.9rem;
@@ -2832,7 +2832,7 @@
 
         .report-icon {
             font-size: 1.8rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -2979,7 +2979,7 @@
 
         .settings-icon {
             font-size: 1.8rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -3012,7 +3012,7 @@
         }
 
         .toggle-switch.active {
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
         }
 
         .toggle-slider {
@@ -3032,7 +3032,7 @@
 
         .settings-btn {
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);
+            background: linear-gradient(90deg, #BC13FE,#dd24a6);
             border: none;
             border-radius: 10px;
             color: white;
@@ -3043,7 +3043,7 @@
 
         .settings-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 46, 181, 0.3);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
         }
 
         .settings-btn.danger {
@@ -3175,6 +3175,247 @@
                 max-width: 400px;
             }
         }
+    
+        .mood-music-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+        }
+        
+        .mood-dropdown {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-suggestions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .activity-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+
+        /* Quiz Modal Styles */
+        .quiz-modal-content {
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .quiz-name-screen {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .quiz-name-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .quiz-name-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(188, 19, 254, 0.2);
+        }
+
+        .quiz-question-screen {
+            display: none;
+            padding: 2rem;
+        }
+
+        .quiz-question-screen.active {
+            display: block;
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-light);
+            transform: translateX(5px);
+        }
+
+        .quiz-option.selected {
+            background: linear-gradient(90deg, rgba(188, 19, 254, 0.2), rgba(221, 36, 166, 0.2));
+            border-color: var(--accent);
+        }
+
+        .quiz-progress {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .quiz-results {
+            display: none;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .quiz-results.active {
+            display: block;
+        }
+
+        .quiz-results h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .quiz-recommendations {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .quiz-recommendations h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quiz-recommendations li {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Video Thumbnail Styles */
+        .daily-motivation-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+        }
+
+        .motivation-date {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .motivation-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #BC13FE, #dd24a6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .video-thumbnail-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .video-thumbnail-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(188, 19, 254, 0.3);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .video-play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(188, 19, 254, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .video-thumbnail-container:hover .video-play-overlay {
+            background: rgba(221, 36, 166, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-play-overlay i {
+            font-size: 2rem;
+            color: white;
+            margin-left: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -3271,14 +3512,22 @@
                 <button class="nav-tab" data-tab="physical">Physical Health</button>
                 <button class="nav-tab" data-tab="healthcard">Health Card</button>
                 <button class="nav-tab" data-tab="reports">Reports</button>
+                <button class="nav-tab" data-tab="gamecenter">Game Center</button>
                 <button class="nav-tab" data-tab="settings">Settings</button>
+                <button class="nav-tab" data-tab="aboutteam">About the Team</button>
             </div>
         </nav>
 
         <!-- Dashboard Section -->
         <div class="content-section active" id="dashboard">
-            <h2 class="greeting">Hello, <span id="greetingName">User</span>! 👋</h2>
+            <h2 class="greeting">Welcome, <span id="greetingName">User</span>! 👋</h2>
             <p class="daily-quote" id="dailyQuote">"The greatest wealth is health." - Virgil</p>
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn" id="startHealthQuizBtn" style="max-width: 300px; display: inline-block;">
+                    <i class="fas fa-clipboard-list"></i> Start Health Quiz
+                </button>
+            </div>
+
             
             <div class="dashboard-cards">
                 <div class="dashboard-card" data-section="mental">
@@ -3458,6 +3707,15 @@
                     </div>
                     <p class="feature-description">Grow your digital garden with positive actions</p>
                 </div>
+                
+                <div class="mental-feature" data-feature="moodmusic">
+                    <div class="feature-header">
+                        <div class="feature-icon">🎵</div>
+                        <h3 class="feature-title">Mood-to-Music</h3>
+                    </div>
+                    <p class="feature-description">Match your mood with curated music and activities</p>
+                </div>
+
                 <div class="mental-feature" data-feature="assessment">
                     <div class="feature-header">
                         <div class="feature-icon">🌬️</div>
@@ -3471,6 +3729,17 @@
         <!-- Physical Health Section -->
         <div class="content-section" id="physical">
             <div class="health-features">
+
+            <!-- Daily Motivation Video Section -->
+            <div class="daily-motivation-section">
+                <div class="motivation-date" id="motivationDate">Today's Motivational Video</div>
+                <h3 class="motivation-title">🎬 Daily Motivation</h3>
+                <div id="dailyVideoContainer">
+                    <!-- Video thumbnail will be inserted here -->
+                </div>
+            </div>
+
+
                 <div class="health-feature" data-feature="caloriesmart">
                     <div class="feature-header">
                         <div class="feature-icon">🍎</div>
@@ -3499,6 +3768,33 @@
                     </div>
                     <p class="feature-description">Self-assessment questions to track your wellness</p>
                 </div>
+                
+                
+
+                <div class="health-feature" data-feature="dietplan">
+                    <div class="feature-header">
+                        <div class="feature-icon">🥗</div>
+                        <h3 class="feature-title">7-Day Diet Planner</h3>
+                    </div>
+                    <p class="feature-description">Get personalized weekly meal plans based on your preferences</p>
+                </div>
+
+                <div class="health-feature" data-feature="habitbooster">
+                    <div class="feature-header">
+                        <div class="feature-icon">🔗</div>
+                        <h3 class="feature-title">Habit Booster</h3>
+                    </div>
+                    <p class="feature-description">Stack new habits onto existing ones for lasting change</p>
+                </div>
+
+                <div class="health-feature" data-feature="todolist">
+                    <div class="feature-header">
+                        <div class="feature-icon">✅</div>
+                        <h3 class="feature-title">Daily To-Do List</h3>
+                    </div>
+                    <p class="feature-description">Manage daily tasks with smart reminders and progress tracking</p>
+                </div>
+
                 <div class="health-feature" data-feature="aboutme">
                     <div class="feature-header">
                         <div class="feature-icon">👤</div>
@@ -3663,7 +3959,186 @@
             </div>
         </div>
 
+
+        <!-- About the Team Section -->
+        <div class="content-section" id="aboutteam">
+            <div class="about-team-container">
+                <h2 class="section-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; background: linear-gradient(90deg, #BC13FE, #dd24a6); -webkit-background-clip: text; background-clip: text; color: transparent;">Meet Our Team</h2>
+                
+                <div class="team-cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                    <!-- Fiona's Card -->
+                    <div style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border); box-shadow: var(--card-shadow); display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; border: 3px solid transparent; background: linear-gradient(90deg, #BC13FE,#dd24a6); padding: 3px; margin-bottom: 1.5rem;">
+    <img src="fiona.jpeg" alt="Fiona Sachdeva" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+</div>
+
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(90deg, #BC13FE, #00FFFF); -webkit-background-clip: text; background-clip: text; color: transparent;">Fiona Sachdeva</h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.5rem; font-weight: 500;">Co-Founder & Lead Developer</p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; text-align: justify; font-size: 0.95rem;">
+                            I'm Fiona Sachdeva, a student driven by a genuine passion for coding, creativity, and building technology solutions that create real social impact. What began as simple curiosity has evolved into a purposeful journey of developing meaningful digital projects that make everyday life healthier, safer, and more connected. I work with Python, HTML, CSS, JavaScript, and I am currently exploring C++ to strengthen my problem-solving skills and deepen my understanding of core programming principles. I frequently design and code in environments such as VS Code, Jupyter Notebook, Scratch, Thunkable, MIT App Inventor, CodePen, Canva, Adobe Express, Figma, and Python IDLE, which help me bring ideas to life.
+                            <br><br>
+                            I have developed several socially driven applications focused on real-world needs. Namaste AI, an AI-powered cultural learning platform, won a National-Level Innovation Competition organized by STEMROBO for its engaging approach to cultural awareness. Healthara, my AI-based wellness app, promotes physical and mental wellbeing through personalized, accessible guidance. Mitti encourages environmental responsibility through mindful daily actions, and SheSafe empowers women's safety through smart and accessible protection features. Additionally, projects like Seikai have allowed me to explore innovation and refine my practical thinking.
+                            <br><br>
+                            Beyond programming, I have a strong interest in graphic designing. I have worked extensively with Canva, Adobe Express, and Figma, and I've explored numerous AI creativity tools to enhance my design capabilities. I have won multiple competitions, including AI for Art and several school-level and interschool design and innovation contests. Competitions such as the CBSE Skill Expo and various design exhibitions hold a special place for me, as they have not only recognized my work but also strengthened my confidence and commitment to learn more.
+                            <br><br>
+                            I am known as a creative thinker with a problem-solving mindset, someone who can work with dedication, clarity, and discipline. I have often worked over 20 hours a day when deeply focused on building or improving a project. I proudly balance both my academic excellence and my technical project work, always striving to evolve as a learner and creator.
+                            <br><br>
+                            My future goal is to become an entrepreneur who builds meaningful, human-centered solutions. I believe that technology should serve society with empathy, awareness, and purpose, and I am continuously working toward that vision.
+                        </p>
+                    </div>
+                    
+                    <!-- Arhita's Card -->
+                    <div style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border); box-shadow: var(--card-shadow); display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; border: 3px solid transparent; background: linear-gradient(90deg, #BC13FE,#dd24a6); padding: 3px; margin-bottom: 1.5rem;">
+    <img src="arhita.jpeg" alt="Arhita Jain" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+</div>
+
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(90deg, #BC13FE, #00FFFF); -webkit-background-clip: text; background-clip: text; color: transparent;">Arhita Jain</h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.5rem; font-weight: 500;">Co-Founder & Lead Counselor</p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; text-align: justify; font-size: 0.95rem;">
+                            My name is Arhita Jain, and I am a student of Class 8. I have always been deeply curious about technology and innovation. My journey with programming began when I was in third grade, and since then, I have continued to explore, experiment, and create with great enthusiasm. Coding for me is not just a skill—it's a way to express ideas, solve real-world problems, and make an impact.
+                            <br><br>
+                            Over the years, I have learned and mastered several programming languages and tools. I can code in Python, HTML, CSS, and JavaScript (GSS), and I also have hands-on experience with block-based coding platforms such as Scratch, Thunkable, MIT App Inventor, and CodePen. I frequently work on professional environments like VS Code, Python IDLE, Jupyter Notebook, and Sublime Text, which help me bring my creative ideas to life through technology.
+                            <br><br>
+                            I have developed several innovative and socially driven apps such as Namaste AI, Healthara, Mitti, and SheSafe. Each app has a unique purpose and reflects my belief that technology should be used for positive change. Namaste AI, an AI-powered cultural learning app, won a national-level competition organized by STEMROBO, while Healthara, my wellness-focused app, promotes healthy living through AI-powered suggestions. My other projects, Mitti and SheSafe, focus on environmental sustainability and women's safety respectively.
+                            <br><br>
+                            I have proudly represented my school in multiple competitions and exhibitions, including the CBSE Skill Expo, where I showcased my projects and innovative ideas before a wide audience. I am also an active participant in ATL (Atal Tinkering Lab) and Computer Science activities, where I constantly challenge myself to think beyond the ordinary.
+                            <br><br>
+                            Apart from technology, I love learning new languages and exploring different cultures. I can speak English, Hindi, German, and Mandarin, which helps me connect with people across the world and enhances my global perspective. I believe that being multilingual and tech-savvy gives me the power to bridge cultures through innovation.
+                            <br><br>
+                            I am a firm believer in using creativity and technology hand in hand to make the world a better place. My goal is to continue developing impactful apps and projects that solve real-life problems, inspire others, and contribute to building a smarter, kinder, and more sustainable future.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="team-mission" style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 20px; padding: 2rem; border: 1px solid var(--glass-border); box-shadow: var(--card-shadow); text-align: center;">
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);">
+                        Together, Fiona and Arhita are passionate young innovators who aim to create technology that supports both mental and physical well-being. Their vision is to make wellness feel gentle, accessible, and meaningful for everyone through the power of innovation and empathy.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Settings Section -->
+        <!-- Game Center Section -->
+        <div class="content-section" id="gamecenter">
+            <div class="game-center-container">
+                <h2 class="section-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; background: linear-gradient(90deg, #BC13FE, #00FFFF); -webkit-background-clip: text; background-clip: text; color: transparent;">Game Center</h2>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem;">Play interactive wellness games to learn about health in a fun way!</p>
+                
+                <div class="games-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmin(300px, 1fr)); gap: 2rem;">
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">🏷️</div>
+                        <h3 class="dashboard-card-title">The Label Trap</h3>
+                        <p class="dashboard-card-description">Learn to read food labels correctly</p>
+                        <a href="https://frihita.github.io/The_label_trap/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">🍬</div>
+                        <h3 class="dashboard-card-title">Sugar Illusion</h3>
+                        <p class="dashboard-card-description">Discover hidden sugars in everyday foods</p>
+                        <a href="https://frihita.github.io/Sugar-illusion/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">💧</div>
+                        <h3 class="dashboard-card-title">Water Quest</h3>
+                        <p class="dashboard-card-description">Master the art of staying hydrated</p>
+                        <a href="https://frihita.github.io/water-quest/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">⚖️</div>
+                        <h3 class="dashboard-card-title">BMI Battle</h3>
+                        <p class="dashboard-card-description">Understand BMI and healthy weight ranges</p>
+                        <a href="https://frihita.github.io/BMI-battle/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">🇮🇳</div>
+                        <h3 class="dashboard-card-title">Label Padega India</h3>
+                        <p class="dashboard-card-description">Know your food labels for healthier choices</p>
+                        <a href="https://frihita.github.io/label-padega-india/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">🌱</div>
+                        <h3 class="dashboard-card-title">Mind Garden Quiz</h3>
+                        <p class="dashboard-card-description">Test your mental wellness knowledge</p>
+                        <a href="https://frihita.github.io/mind-garden-quiz/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">😊</div>
+                        <h3 class="dashboard-card-title">Smile Spark</h3>
+                        <p class="dashboard-card-description">Boost your mood with positive activities</p>
+                        <a href="https://frihita.github.io/smile-spark/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">🧩</div>
+                        <h3 class="dashboard-card-title">Mind Myths</h3>
+                        <p class="dashboard-card-description">Bust common mental health misconceptions</p>
+                        <a href="https://frihita.github.io/mind-myths/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">✨</div>
+                        <h3 class="dashboard-card-title">Modern Mirage</h3>
+                        <p class="dashboard-card-description">See through modern health myths</p>
+                        <a href="https://frihita.github.io/Morden_mirage/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">🎭</div>
+                        <h3 class="dashboard-card-title">Everyday Illusion</h3>
+                        <p class="dashboard-card-description">Challenge your perception of daily health habits</p>
+                        <a href="https://frihita.github.io/everyday-illusion/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">🏋️</div>
+                        <h3 class="dashboard-card-title">The Fitness Confusion</h3>
+                        <p class="dashboard-card-description">Clear up fitness myths and facts</p>
+                        <a href="https://frihita.github.io/The-Fitness-Confusion/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card" style="text-align: center;">
+                        <div class="dashboard-card-icon" style="font-size: 3rem;">🌿</div>
+                        <h3 class="dashboard-card-title">The Natural Deception</h3>
+                        <p class="dashboard-card-description">Learn what 'natural' really means in food</p>
+                        <a href="https://frihita.github.io/The_natural_deception/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <button class="btn" style="margin-top: 1rem; width: auto; padding: 0.6rem 1.5rem;">Play Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="content-section" id="settings">
             <div class="settings-container">
                 <div class="settings-card">
@@ -3904,24 +4379,69 @@
                 <div class="meditation-section">
                     <h3 class="meditation-title">Meditation Tracks</h3>
                     <div class="meditation-tracks">
-                        <div class="meditation-track">
-                            <div class="track-icon">🌙</div>
-                            <div class="track-name">Moonlight Serenity</div>
-                            <div class="track-description">Calming evening meditation music</div>
-                            <button class="play-btn" data-track="moonlight">Play</button>
-                        </div>
-                        <div class="meditation-track">
-                            <div class="track-icon">☀️</div>
-                            <div class="track-name">Sunrise Clarity</div>
-                            <div class="track-description">Morning positivity track</div>
-                            <button class="play-btn" data-track="sunrise">Play</button>
-                        </div>
-                        <div class="meditation-track">
-                            <div class="track-icon">🌊</div>
-                            <div class="track-name">Ocean Flow</div>
-                            <div class="track-description">Deep focus & relaxation loop</div>
-                            <button class="play-btn" data-track="ocean">Play</button>
-                        </div>
+                        <!-- Your meditation tracks -->
+<div class="meditation-track">
+    <div class="track-icon">🌙</div>
+    <div class="track-name">Moonlight Serenity</div>
+    <div class="track-description">Calming evening meditation music</div>
+    <button class="play-btn" data-track="moonlight">Play</button>
+</div>
+<div class="meditation-track">
+    <div class="track-icon">☀️</div>
+    <div class="track-name">Sunrise Clarity</div>
+    <div class="track-description">Morning positivity track</div>
+    <button class="play-btn" data-track="sunrise">Play</button>
+</div>
+<div class="meditation-track">
+    <div class="track-icon">🌊</div>
+    <div class="track-name">Ocean Flow</div>
+    <div class="track-description">Deep focus & relaxation loop</div>
+    <button class="play-btn" data-track="ocean">Play</button>
+</div>
+
+<script>
+    const tracks = {
+        moonlight: "moonlight-serenity.mp3",
+        sunrise: "sunrise-clarity.mp3",
+        ocean: "ocean-flow.mp3"
+    };
+
+    const audio = new Audio();
+    let currentTrack = null; // Keep track of which track is playing
+    const buttons = document.querySelectorAll(".play-btn");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const trackName = button.getAttribute("data-track");
+
+            // If clicking the same track that's already playing, pause it
+            if (currentTrack === trackName && !audio.paused) {
+                audio.pause();
+                button.textContent = "Play";
+                currentTrack = null;
+                return;
+            }
+
+            // Pause any current track and reset all buttons
+            audio.pause();
+            buttons.forEach(btn => btn.textContent = "Play");
+
+            // Play new track
+            audio.src = tracks[trackName];
+            audio.play();
+            button.textContent = "Stop";
+            currentTrack = trackName;
+        });
+    });
+
+    // Reset button text when audio ends
+    audio.addEventListener("ended", () => {
+        buttons.forEach(btn => btn.textContent = "Play");
+        currentTrack = null;
+    });
+</script>
+
+
                     </div>
                 </div>
                 
@@ -3999,7 +4519,7 @@
                 <div class="streak-indicator">
                     <h4>Consistency Streak</h4>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 70%; background: linear-gradient(90deg, #FF2EB5 0%, #A855F7 100%);"></div>
+                        <div class="progress-fill" style="width: 70%; background: linear-gradient(90deg, #BC13FE, #00FFFF);"></div>
                     </div>
                     <p>7 days in a row! Keep it up!</p>
                 </div>
@@ -4874,8 +5394,8 @@
                         datasets: [{
                             label: 'Calm Score',
                             data: [65, 78, 90, 81, 56, 85, 92],
-                            borderColor: '#FF2EB5',
-                            backgroundColor: 'rgba(255, 46, 181, 0.1)',
+                            borderColor: '#BC13FE',
+                            backgroundColor: 'rgba(188, 19, 254, 0.1)',
                             tension: 0.4,
                             fill: true
                         }]
@@ -5002,9 +5522,9 @@
                         datasets: [{
                             label: 'Current Week',
                             data: [85, 78, 92, 75, 88, 90],
-                            backgroundColor: 'rgba(255, 46, 181, 0.2)',
-                            borderColor: '#FF2EB5',
-                            pointBackgroundColor: '#FF2EB5'
+                            backgroundColor: 'rgba(188, 19, 254, 0.2)',
+                            borderColor: '#BC13FE',
+                            pointBackgroundColor: '#BC13FE'
                         }, {
                             label: 'Previous Week',
                             data: [75, 82, 85, 70, 80, 85],
@@ -5053,7 +5573,7 @@
                         datasets: [{
                             data: [1500, 500],
                             backgroundColor: [
-                                '#FF2EB5',
+                                '#BC13FE',
                                 'rgba(255, 255, 255, 0.1)'
                             ],
                             borderWidth: 0
@@ -5488,13 +6008,14 @@
             
             // Meditation tracks
             playBtns.forEach(btn => {
+                playBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const track = btn.dataset.track;
                     const isPlaying = btn.textContent === 'Play';
-                    
+
                     // Reset all buttons
                     playBtns.forEach(b => b.textContent = 'Play');
-                    
+
                     if (isPlaying) {
                         btn.textContent = 'Stop';
                         showToast(`Playing ${track} meditation track...`, 'success');
@@ -5502,6 +6023,9 @@
                         showToast(`Stopped ${track} meditation track`, 'info');
                     }
                 });
+            });
+
+
             });
             
             // Breathing modes
@@ -5953,7 +6477,7 @@
                         datasets: [{
                             data: [0, appState.dailyCalorieGoal],
                             backgroundColor: [
-                                '#FF2EB5',
+                                '#BC13FE',
                                 'rgba(255, 255, 255, 0.1)'
                             ],
                             borderWidth: 0
@@ -7117,7 +7641,7 @@
         }
 
         function createConfetti() {
-            const colors = ['#FF2EB5', '#A855F7', '#4ade80', '#fbbf24', '#06b6d4'];
+            const colors = ['#BC13FE', '#A855F7', '#4ade80', '#fbbf24', '#06b6d4'];
             
             for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
@@ -7277,8 +7801,1233 @@
             }
         }
 
+        
+        // ============================================
+        // HEALTH QUIZ - Event Listeners
+        // ============================================
+        document.getElementById('startHealthQuizBtn')?.addEventListener('click', () => {
+            document.getElementById('healthQuizModal').style.display = 'flex';
+        });
+        
+        document.getElementById('closeHealthQuiz')?.addEventListener('click', () => {
+            closeHealthQuizModal();
+        });
+        
+        // ============================================
+        // MOOD-TO-MUSIC System
+        // ============================================
+        const moodPlaylists = {
+            happy: {
+                playlist: 'https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf',
+                activities: [
+                    'Dance to your favorite song for 2 minutes',
+                    'Share your happiness - call a friend',
+                    "Journal 3 things you're grateful for"
+                ]
+            },
+            sad: {
+                playlist: 'https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOdYrH5lMcZqJZmVrvchSJFg',
+                activities: [
+                    'Take a 5-minute gentle walk outside',
+                    'Practice deep breathing for 3 minutes',
+                    'Write down your feelings in a journal'
+                ]
+            },
+            stressed: {
+                playlist: 'https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOdHpqPDdCGvFFVUVrJMT7Bp',
+                activities: [
+                    'Do 10 jumping jacks to release tension',
+                    'Stretch your arms and neck for 2 minutes',
+                    'Practice the 4-7-8 breathing technique'
+                ]
+            },
+            angry: {
+                playlist: 'https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOd3Zy-0TRFlm9WdWdgNCrJ1',
+                activities: [
+                    'Do 20 push-ups or jumping jacks',
+                    "Write an angry letter (don't send it)",
+                    'Listen to loud music and move your body'
+                ]
+            },
+            lonely: {
+                playlist: 'https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOfD8R0ikpR9z1qBbX5k2gG0',
+                activities: [
+                    'Call or text someone you care about',
+                    'Join an online community or forum',
+                    'Practice self-compassion meditation'
+                ]
+            },
+            tired: {
+                playlist: 'https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOcTjVvk7XW6ZYC5qZfqS9cH',
+                activities: [
+                    'Take a 10-minute power nap',
+                    'Drink a glass of water',
+                    'Do light stretching for 3 minutes'
+                ]
+            },
+            energetic: {
+                playlist: 'https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf',
+                activities: [
+                    'Go for a brisk 10-minute walk or jog',
+                    'Complete a high-intensity 5-minute workout',
+                    'Clean or organize one area of your space'
+                ]
+            }
+        };
+        
+        function selectMood(mood) {
+            if (!mood) return;
+            
+            const data = moodPlaylists[mood];
+            const resultDiv = document.getElementById('moodMusicResult');
+            const musicPlayer = document.getElementById('musicPlayer');
+            const suggestions = document.getElementById('activitySuggestions');
+            
+            musicPlayer.innerHTML = `
+                <iframe width="100%" height="315" src="${data.playlist}" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen style="border-radius: 15px;"></iframe>
+            `;
+            
+            suggestions.innerHTML = data.activities.map((activity, i) => `
+                <div class="activity-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">${i + 1}</div>
+                    <p>${activity}</p>
+                </div>
+            `).join('');
+            
+            resultDiv.style.display = 'block';
+            showToast('Mood music loaded! 🎵', 'success');
+        }
+        
+        // ============================================
+        // DRAWING CANVAS Implementation
+        // ============================================
+        let canvas, ctx;
+        let isDrawing = false;
+        let currentTool = 'brush';
+        let currentColor = '#BC13FE';
+        let brushSize = 5;
+        
+        function initDrawingCanvas() {
+            canvas = document.getElementById('drawingCanvas');
+            if (!canvas) return;
+            
+            ctx = canvas.getContext('2d');
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            // Touch support
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent('mousedown', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent('mousemove', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            canvas.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                const mouseEvent = new MouseEvent('mouseup', {});
+                canvas.dispatchEvent(mouseEvent);
+            });
+        }
+        
+        function startDrawing(e) {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+        
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ctx.lineWidth = brushSize;
+            ctx.strokeStyle = currentTool === 'eraser' ? 'white' : currentColor;
+            ctx.lineTo(x, y);
+            ctx.stroke();
+        }
+        
+        function stopDrawing() {
+            isDrawing = false;
+            ctx.beginPath();
+        }
+        
+        function setDrawingTool(tool) {
+            currentTool = tool;
+            showToast(tool === 'brush' ? 'Brush selected' : 'Eraser selected', 'info');
+        }
+        
+        function setDrawingColor(color) {
+            currentColor = color;
+            currentTool = 'brush';
+        }
+        
+        function setBrushSize(size) {
+            brushSize = parseInt(size);
+        }
+        
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            showToast('Canvas cleared', 'info');
+        }
+        
+        function saveDrawing() {
+            canvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `healthara-drawing-${Date.now()}.png`;
+                a.click();
+                URL.revokeObjectURL(url);
+                showToast('Drawing saved!', 'success');
+            });
+        }
+        
+        // ============================================
+        // TO-DO LIST with Hourly Reminders
+        // ============================================
+        let todoReminderInterval;
+        
+        function addTodoTask() {
+            const input = document.getElementById('newTodoInput');
+            const task = input.value.trim();
+            
+            if (!task) {
+                showToast('Please enter a task', 'warning');
+                return;
+            }
+            
+            if (!appState.todos) appState.todos = [];
+            
+            const newTask = {
+                id: Date.now(),
+                text: task,
+                completed: false,
+                date: new Date().toLocaleDateString()
+            };
+            
+            appState.todos.push(newTask);
+            input.value = '';
+            renderTodoList();
+            saveUserData();
+            showToast('Task added!', 'success');
+            
+            // Start reminder if not already running
+            if (!todoReminderInterval) {
+                startTodoReminders();
+            }
+        }
+        
+        function renderTodoList() {
+            const list = document.getElementById('todoList');
+            if (!list || !appState.todos) return;
+            
+            const today = new Date().toLocaleDateString();
+            const todayTasks = appState.todos.filter(t => t.date === today);
+            
+            list.innerHTML = todayTasks.map(task => `
+                <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 10px;">
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} 
+                        onchange="toggleTodo(${task.id})" 
+                        style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent);">
+                    <span style="flex: 1; ${task.completed ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${task.text}</span>
+                    <button onclick="deleteTodo(${task.id})" style="background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1.2rem;">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('') || '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No tasks for today. Add one above!</p>';
+            
+            checkTodoCompletion(todayTasks);
+        }
+        
+        function toggleTodo(id) {
+            const task = appState.todos.find(t => t.id === id);
+            if (task) {
+                task.completed = !task.completed;
+                renderTodoList();
+                saveUserData();
+            }
+        }
+        
+        function deleteTodo(id) {
+            appState.todos = appState.todos.filter(t => t.id !== id);
+            renderTodoList();
+            saveUserData();
+            showToast('Task deleted', 'info');
+        }
+        
+        function checkTodoCompletion(tasks) {
+            const statusDiv = document.getElementById('todoStatus');
+            if (!statusDiv || tasks.length === 0) return;
+            
+            const allCompleted = tasks.every(t => t.completed);
+            const hour = new Date().getHours();
+            const isEndOfDay = hour >= 21; // After 9 PM
+            
+            if (allCompleted && tasks.length > 0) {
+                statusDiv.innerHTML = `
+                    <div style="color: var(--success); font-size: 1.2rem; font-weight: 600;">
+                        ✨ Waoo! You are so ambitious and consistent! Keep shining ✨
+                    </div>
+                `;
+                statusDiv.style.display = 'block';
+            } else if (isEndOfDay && !allCompleted && tasks.length > 0) {
+                statusDiv.innerHTML = `
+                    <div style="color: var(--warning); font-size: 1.1rem;">
+                        💪 You need to focus more on your daily tasks. You've got this — try again tomorrow.
+                    </div>
+                `;
+                statusDiv.style.display = 'block';
+            } else {
+                statusDiv.style.display = 'none';
+            }
+        }
+        
+        function startTodoReminders() {
+            // Play reminder sound every hour
+            todoReminderInterval = setInterval(() => {
+                if (appState.todos && appState.todos.length > 0) {
+                    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBi+J1OvOeDEGH2Sx5bGpYBwKSJ3c8LlwJAUsi9Ht0YY6BxlfsvSxqmIcCkWb2+66cSYGK4nU7dKFOwgXZ7TotqllHAhCm9vwuXMnBiyJ0+3ShjwIGGay5LSpZhsIQ5zb77l1KAYrhNLr0IU8CBllsuS0qmYbCEOc3O+5dykGLI');
+                    audio.volume = 0.3;
+                    audio.play().catch(() => {});
+                    showToast("⏰ Don't forget to check your to-do list!", 'info');
+                }
+            }, 3600000); // Every hour
+        }
+        
+        // ============================================
+        // HABIT BOOSTER (Habit Stacking)
+        // ============================================
+        function saveHabitStack() {
+            const existing = document.getElementById('existingHabit').value.trim();
+            const newHabit = document.getElementById('newHabit').value.trim();
+            
+            if (!existing || !newHabit) {
+                showToast('Please fill in both fields', 'warning');
+                return;
+            }
+            
+            if (!appState.habitStacks) appState.habitStacks = [];
+            
+            appState.habitStacks.push({
+                id: Date.now(),
+                existing,
+                newHabit: newHabit,
+                created: new Date().toLocaleDateString()
+            });
+            
+            document.getElementById('existingHabit').value = '';
+            document.getElementById('newHabit').value = '';
+            
+            renderHabitStacks();
+            saveUserData();
+            showToast('Habit stack saved!', 'success');
+        }
+        
+        function renderHabitStacks() {
+            const container = document.getElementById('habitStacks');
+            if (!container || !appState.habitStacks) return;
+            
+            container.innerHTML = appState.habitStacks.map(habit => `
+                <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--accent);">
+                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">
+                        <strong>After I</strong> ${habit.existing},
+                    </p>
+                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">
+                        <strong>I will</strong> ${habit.newHabit}
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                        <small style="color: var(--text-secondary);">Created: ${habit.created}</small>
+                        <button onclick="deleteHabitStack(${habit.id})" style="background: none; border: none; color: var(--danger); cursor: pointer;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            `).join('') || '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No habit stacks yet. Create your first one above!</p>';
+        }
+        
+        function deleteHabitStack(id) {
+            appState.habitStacks = appState.habitStacks.filter(h => h.id !== id);
+            renderHabitStacks();
+            saveUserData();
+            showToast('Habit stack deleted', 'info');
+        }
+        
+        // ============================================
+        // Feature Modal Opening Functions
+        // ============================================
+        function openFeatureModal(feature) {
+            const modal = document.getElementById(feature + 'Modal');
+            if (modal) {
+                modal.style.display = 'flex';
+                
+                // Initialize feature-specific functionality
+                if (feature === 'drawingcanvas') {
+                    setTimeout(initDrawingCanvas, 100);
+                } else if (feature === 'todolist') {
+                    renderTodoList();
+                } else if (feature === 'habitbooster') {
+                    renderHabitStacks();
+                } else if (feature === 'motivideo') {
+                    setTimeout(startMotivationRotation, 100);
+                }
+            }
+        }
+        
+        function closeModal(feature) {
+            const modal = document.getElementById(feature + 'Modal');
+            if (modal) {
+                modal.style.display = 'none';
+                
+                // Cleanup feature-specific functionality
+                if (feature === 'motivideo') {
+                    stopMotivationRotation();
+                }
+            }
+        }
+        
+        
+        // ============================================
+        // DIET PLAN GENERATOR
+        // ============================================
+        let currentDietPlan = null;
+        let currentDietDay = 1;
+        
+        function generateDietPlan() {
+            const name = document.getElementById('dietName').value.trim();
+            const age = document.getElementById('dietAge').value;
+            const height = document.getElementById('dietHeight').value;
+            const weight = document.getElementById('dietWeight').value;
+            const meals = document.getElementById('dietMeals').value;
+            const type = document.getElementById('dietType').value;
+            const allergies = document.getElementById('dietAllergies').value.trim();
+            
+            if (!name || !age || !height || !weight || !meals || !type) {
+                showToast('Please fill all required fields', 'warning');
+                return;
+            }
+            
+            // Generate 7-day diet plan
+            const plan = {
+                name,
+                age,
+                height,
+                weight,
+                meals: parseInt(meals),
+                type,
+                allergies,
+                created: new Date().toLocaleDateString(),
+                days: []
+            };
+            
+            const mealTypes = {
+                veg: {
+                    morning: ['Green Tea', 'Lemon Water', 'Herbal Tea'],
+                    breakfast: ['Oatmeal with fruits', 'Whole grain toast with avocado', 'Smoothie bowl', 'Vegetable poha', 'Idli with sambar'],
+                    lunch: ['Mixed vegetable salad', 'Brown rice with dal', 'Quinoa bowl', 'Vegetable curry with roti', 'Paneer tikka'],
+                    snack: ['Fruit salad', 'Nuts and seeds mix', 'Yogurt', 'Vegetable sticks with hummus'],
+                    dinner: ['Grilled vegetables', 'Lentil soup', 'Stir-fried tofu', 'Vegetable khichdi', 'Palak paneer']
+                },
+                nonveg: {
+                    morning: ['Green Tea', 'Black Coffee', 'Lemon Water'],
+                    breakfast: ['Eggs and toast', 'Chicken sandwich', 'Protein smoothie', 'Egg bhurji with roti'],
+                    lunch: ['Grilled chicken salad', 'Fish curry with rice', 'Chicken breast with vegetables', 'Mutton curry'],
+                    snack: ['Boiled eggs', 'Chicken strips', 'Greek yogurt', 'Protein bar'],
+                    dinner: ['Grilled fish', 'Chicken soup', 'Lean meat with quinoa', 'Egg curry with roti']
+                },
+                vegan: {
+                    morning: ['Herbal Tea', 'Lemon Water', 'Green Juice'],
+                    breakfast: ['Smoothie bowl', 'Chia pudding', 'Quinoa porridge', 'Tofu scramble'],
+                    lunch: ['Buddha bowl', 'Lentil soup', 'Chickpea curry', 'Vegetable stir-fry with rice'],
+                    snack: ['Fruit', 'Nuts', 'Energy balls', 'Vegetable sticks with tahini'],
+                    dinner: ['Grilled tofu', 'Black bean soup', 'Vegetable curry', 'Zucchini noodles']
+                }
+            };
+            
+            const mealPlan = mealTypes[type];
+            
+            for (let i = 1; i <= 7; i++) {
+                const day = {
+                    day: i,
+                    morning: mealPlan.morning[Math.floor(Math.random() * mealPlan.morning.length)],
+                    breakfast: mealPlan.breakfast[Math.floor(Math.random() * mealPlan.breakfast.length)],
+                    lunch: mealPlan.lunch[Math.floor(Math.random() * mealPlan.lunch.length)],
+                    snack: plan.meals >= 4 ? mealPlan.snack[Math.floor(Math.random() * mealPlan.snack.length)] : null,
+                    dinner: mealPlan.dinner[Math.floor(Math.random() * mealPlan.dinner.length)]
+                };
+                plan.days.push(day);
+            }
+            
+            currentDietPlan = plan;
+            currentDietDay = 1;
+            
+            // Save plan
+            if (!appState.dietPlans) appState.dietPlans = [];
+            appState.dietPlans.push(plan);
+            saveUserData();
+            
+            // Display plan
+            document.getElementById('dietPlanForm').style.display = 'none';
+            document.getElementById('dietPlanResult').style.display = 'block';
+            displayDietDay();
+            showToast('7-Day Diet Plan Generated!', 'success');
+        }
+        
+        function displayDietDay() {
+            if (!currentDietPlan) return;
+            
+            const day = currentDietPlan.days[currentDietDay - 1];
+            document.getElementById('dietPlanTitle').textContent = `${currentDietPlan.name}'s Diet - Day ${currentDietDay}`;
+            
+            let html = `
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">☀️ Morning Drink</h4>
+                    <p style="padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 10px;">${day.morning}</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">🍳 Breakfast</h4>
+                    <p style="padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 10px;">${day.breakfast}</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">🍽️ Lunch</h4>
+                    <p style="padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 10px;">${day.lunch}</p>
+                </div>
+            `;
+            
+            if (day.snack) {
+                html += `
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">🍎 Evening Snack</h4>
+                        <p style="padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 10px;">${day.snack}</p>
+                    </div>
+                `;
+            }
+            
+            html += `
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">🌙 Dinner</h4>
+                    <p style="padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 10px;">${day.dinner}</p>
+                </div>
+            `;
+            
+            document.getElementById('dietDayContent').innerHTML = html;
+            
+            // Update button states
+            document.getElementById('prevDietDay').disabled = currentDietDay === 1;
+            document.getElementById('nextDietDay').disabled = currentDietDay === 7;
+        }
+        
+        function changeDietDay(direction) {
+            currentDietDay += direction;
+            if (currentDietDay < 1) currentDietDay = 1;
+            if (currentDietDay > 7) currentDietDay = 7;
+            displayDietDay();
+        }
+        
+        // ============================================
+        // DAILY MOTIVATION VIDEO ROTATOR
+        // ============================================
+        const motivationVideos = [
+            'https://youtu.be/2kab91mDojo?si=UANo8DMm7nZKB2LL',  // Motivational speech
+            'https://youtu.be/xyQY8a-ng6g?si=YZpZvHN7G_4Czh5q',  // Never give up
+            'https://youtu.be/2sFSIu-Afek?si=g0hbQY2zx2L-yxII',  // Fitness motivation
+            'https://youtu.be/brjAjq4zEIE?si=h128BiQUod3vFhsC',  // Mindset motivation
+            'https://youtu.be/sEeFPcl9Nco?si=rGBXBYLkoQnlc_hp',  // Success motivation
+            'https://youtu.be/svVDEkBQxpU?si=CFF-oUtQvUhhSQiM',  // Morning motivation
+            'https://youtu.be/0zYjgZD2aG8?si=_T-ZyE4cBJsr4Pg8'   // Daily inspiration
+        ];
+        
+        let currentMotivationIndex = 0;
+        let motivationRotationInterval = null;
+        
+        function loadMotivationVideo(index) {
+            const videoUrl = motivationVideos[index];
+            document.getElementById('motivationVideoPlayer').innerHTML = `
+                <iframe width="100%" height="400" src="${videoUrl}" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen style="border-radius: 15px;"></iframe>
+            `;
+        }
+        
+        function startMotivationRotation() {
+            // Start with today's video
+            currentMotivationIndex = new Date().getDate() % motivationVideos.length;
+            loadMotivationVideo(currentMotivationIndex);
+            
+            // Clear any existing interval
+            if (motivationRotationInterval) {
+                clearInterval(motivationRotationInterval);
+            }
+            
+            // Auto-rotate every 45 seconds
+            motivationRotationInterval = setInterval(() => {
+                currentMotivationIndex = (currentMotivationIndex + 1) % motivationVideos.length;
+                loadMotivationVideo(currentMotivationIndex);
+            }, 45000);
+        }
+        
+        function stopMotivationRotation() {
+            if (motivationRotationInterval) {
+                clearInterval(motivationRotationInterval);
+                motivationRotationInterval = null;
+            }
+        }
+
+
+        // Wire up all feature cards
+        document.querySelectorAll('[data-feature]').forEach(card => {
+            card.addEventListener('click', () => {
+                const feature = card.dataset.feature;
+                openFeatureModal(feature);
+            });
+        });
+
+
+
+        // ============================================
+        // HEALTH QUIZ FEATURE
+        // ============================================
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "What is your main struggle?",
+                options: [
+                    { text: "A: Consistency with habits", value: "A" },
+                    { text: "B: Mood swings / overthinking", value: "B" },
+                    { text: "C: Low energy / fatigue", value: "C" },
+                    { text: "D: Sleep schedule issues", value: "D" }
+                ]
+            },
+            {
+                id: 2,
+                question: "When do you feel the lowest?",
+                options: [
+                    { text: "A: Morning", value: "A" },
+                    { text: "B: Afternoon", value: "B" },
+                    { text: "C: Night", value: "C" },
+                    { text: "D: Random times", value: "D" }
+                ]
+            },
+            {
+                id: 3,
+                question: "What's your eating pattern?",
+                options: [
+                    { text: "A: Regular meals", value: "A" },
+                    { text: "B: Skip meals", value: "B" },
+                    { text: "C: Crave junk/snacks", value: "C" },
+                    { text: "D: Emotional eating", value: "D" }
+                ]
+            },
+            {
+                id: 4,
+                question: "How would you describe your emotional support level?",
+                options: [
+                    { text: "A: Strong support system", value: "A" },
+                    { text: "B: Some support but still feel alone sometimes", value: "B" },
+                    { text: "C: Rarely share feelings", value: "C" },
+                    { text: "D: Feel disconnected from everyone", value: "D" }
+                ]
+            },
+            {
+                id: 5,
+                question: "What do you want more of?",
+                options: [
+                    { text: "A: Motivation & consistency", value: "A" },
+                    { text: "B: Emotional calm & mental stability", value: "B" },
+                    { text: "C: More energy & physical strength", value: "C" },
+                    { text: "D: Peaceful routines & balance", value: "D" }
+                ]
+            },
+            {
+                id: 6,
+                question: "How do you cope with stress?",
+                options: [
+                    { text: "A: Journaling / talking", value: "A" },
+                    { text: "B: Distracting with music/screens", value: "B" },
+                    { text: "C: Bottling it up", value: "C" },
+                    { text: "D: Cry or shut down", value: "D" }
+                ]
+            },
+            {
+                id: 7,
+                question: "What growth direction do you want?",
+                options: [
+                    { text: "A: Become more disciplined", value: "A" },
+                    { text: "B: Become emotionally stable", value: "B" },
+                    { text: "C: Become active & fit", value: "C" },
+                    { text: "D: Become calm & mindful", value: "D" }
+                ]
+            },
+            {
+                id: 8,
+                question: "How ready are you for self-improvement?",
+                options: [
+                    { text: "A: Fully ready and committed", value: "A" },
+                    { text: "B: Trying but inconsistent", value: "B" },
+                    { text: "C: Want to start but don't know how", value: "C" },
+                    { text: "D: Tired but want things to change", value: "D" }
+                ]
+            }
+        ];
+
+        let quizAnswers = {};
+        let quizUserName = '';
+
+        function openHealthQuiz() {
+            document.getElementById('healthQuizModal').style.display = 'flex';
+            quizAnswers = {};
+            quizUserName = '';
+            document.getElementById('quizUserName').value = '';
+            document.getElementById('quizNameScreen').style.display = 'block';
+            document.getElementById('quizQuestionsContainer').innerHTML = '';
+            document.getElementById('quizResults').classList.remove('active');
+        }
+
+        function closeHealthQuiz() {
+            document.getElementById('healthQuizModal').style.display = 'none';
+        }
+
+        function startQuiz() {
+            const nameInput = document.getElementById('quizUserName');
+            quizUserName = nameInput.value.trim();
+            
+            if (!quizUserName) {
+                showToast('Please enter your name to continue', 'warning');
+                return;
+            }
+
+            document.getElementById('quizNameScreen').style.display = 'none';
+            renderQuizQuestions();
+        }
+
+        function renderQuizQuestions() {
+            const container = document.getElementById('quizQuestionsContainer');
+            container.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'quiz-question-screen';
+                questionDiv.id = `question-${q.id}`;
+                if (index === 0) questionDiv.classList.add('active');
+
+                const optionsHtml = q.options.map(opt => `
+                    <div class="quiz-option" onclick="selectQuizAnswer(${q.id}, '${opt.value}', this)">
+                        ${opt.text}
+                    </div>
+                `).join('');
+
+                questionDiv.innerHTML = `
+                    <h3 class="quiz-question">Question ${q.id} of ${quizQuestions.length}</h3>
+                    <p class="quiz-question">${q.question}</p>
+                    <div class="quiz-options">
+                        ${optionsHtml}
+                    </div>
+                    <div class="quiz-progress">
+                        ${index < quizQuestions.length - 1 ? 
+                            `<button class="btn" onclick="nextQuestion(${q.id})" id="nextBtn-${q.id}" style="margin-top: 1.5rem; max-width: 200px;" disabled>Next</button>` :
+                            `<button class="btn" onclick="showQuizResults()" id="nextBtn-${q.id}" style="margin-top: 1.5rem; max-width: 200px;" disabled>See Results</button>`
+                        }
+                    </div>
+                `;
+
+                container.appendChild(questionDiv);
+            });
+        }
+
+        function selectQuizAnswer(questionId, answer, element) {
+            const questionDiv = document.getElementById(`question-${questionId}`);
+            const options = questionDiv.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+
+            quizAnswers[questionId] = answer;
+
+            const nextBtn = document.getElementById(`nextBtn-${questionId}`);
+            if (nextBtn) nextBtn.disabled = false;
+        }
+
+        function nextQuestion(currentId) {
+            document.getElementById(`question-${currentId}`).classList.remove('active');
+            const nextQuestion = document.getElementById(`question-${currentId + 1}`);
+            if (nextQuestion) {
+                nextQuestion.classList.add('active');
+            }
+        }
+
+        function showQuizResults() {
+            const answerCounts = { A: 0, B: 0, C: 0, D: 0 };
+            Object.values(quizAnswers).forEach(ans => {
+                answerCounts[ans] = (answerCounts[ans] || 0) + 1;
+            });
+
+            const dominantAnswer = Object.keys(answerCounts).reduce((a, b) => 
+                answerCounts[a] > answerCounts[b] ? a : b
+            );
+
+            const recommendationsMap = {
+                A: [
+                    "Daily Habit Tracker - Build consistency with streak tracking",
+                    "Progress Dashboard with streaks + encouragement - Visualize your journey",
+                    "Daily Affirmations Push Notifications - Stay motivated",
+                    "Habit Booster - Stack your habits for better results",
+                    "Smart Calorie Tracker - Structure your nutrition",
+                    "Daily To-Do List - Organize your daily tasks"
+                ],
+                B: [
+                    "Mood Journal + Emotional Reflection Space - Track your emotional patterns",
+                    "Guided Breathing & Mindfulness Sessions - Find your calm",
+                    "AI Support Chat - Get grounding and motivation when you need it",
+                    "Daily Affirmations Push Notifications - Positive reinforcement",
+                    "Releasing Ritual - Let it go, glow again",
+                    "Mind Garden - Grow your positivity"
+                ],
+                C: [
+                    "Hydration & Nutrition Monitor - Track your water and food intake",
+                    "Gentle Movement / Stretch Routine Plans - Build energy gradually",
+                    "Sleep Routine Helper + Night Diary - Improve your rest quality",
+                    "Smart Calorie Tracker - Optimize your energy through nutrition",
+                    "Daily Wellness Check - Monitor your physical health",
+                    "Posture Tracker - Stay energized with better posture"
+                ],
+                D: [
+                    "Sleep Routine Helper + Night Diary - Create peaceful sleep habits",
+                    "Guided Breathing & Mindfulness Sessions - Find inner peace",
+                    "Gentle Movement / Stretch Routine Plans - Peaceful movement flows",
+                    "Mood Journal + Emotional Reflection Space - Gentle self-check-ins",
+                    "Mind Garden - Create your peaceful sanctuary",
+                    "Releasing Ritual - Release stress, embrace calm"
+                ]
+            };
+
+            const recommendations = recommendationsMap[dominantAnswer];
+
+            document.getElementById('quizQuestionsContainer').style.display = 'none';
+            document.getElementById('resultUserName').textContent = quizUserName;
+            document.getElementById('recommendationsList').innerHTML = 
+                recommendations.map(rec => `<li>${rec}</li>`).join('');
+            document.getElementById('quizResults').classList.add('active');
+
+            showToast('Quiz completed! Check your personalized recommendations', 'success');
+        }
+
+        // Add event listener for Start Health Quiz button
+        document.addEventListener('DOMContentLoaded', function() {
+            const startQuizBtn = document.getElementById('startHealthQuizBtn');
+            if (startQuizBtn) {
+                startQuizBtn.addEventListener('click', openHealthQuiz);
+            }
+        });
+
+        // ============================================
+        // DAILY MOTIVATION VIDEO WITH THUMBNAILS
+        // ============================================
+        const dailyMotivationVideos = [
+            { url: 'https://youtu.be/2sFSIu-Afek?si=g0hbQY2zx2L-yxII', id: '2sFSIu-Afek' },
+            { url: 'https://youtu.be/xyQY8a-ng6g?si=YZpZvHN7G_4Czh5q', id: 'xyQY8a-ng6g' },
+            { url: 'https://youtu.be/2kab91mDojo?si=UANo8DMm7nZKB2LL', id: '2kab91mDojo' }
+        ];
+
+        function loadDailyMotivationVideo() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            const videoIndex = dayOfYear % dailyMotivationVideos.length;
+            const video = dailyMotivationVideos[videoIndex];
+
+            const container = document.getElementById('dailyVideoContainer');
+            const dateDiv = document.getElementById('motivationDate');
+            
+            if (container && dateDiv) {
+                const formattedDate = today.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                dateDiv.textContent = `${formattedDate} - Today's Motivational Video`;
+
+                container.innerHTML = `
+                    <div class="video-thumbnail-container" onclick="window.open('${video.url}', '_blank')">
+                        <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+                             alt="Daily Motivation Video" 
+                             class="video-thumbnail"
+                             onerror="this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'">
+                        <div class="video-play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Load video when page loads and when switching to Physical Health tab
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDailyMotivationVideo();
+            
+            // Reload when switching to physical health tab
+            const physicalTab = document.querySelector('[data-tab="physical"]');
+            if (physicalTab) {
+                physicalTab.addEventListener('click', function() {
+                    setTimeout(loadDailyMotivationVideo, 100);
+                });
+            }
+        });
+
+
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
+    
+
+    <!-- Health Quiz Modal -->
+    
+    <!-- Mood-to-Music Modal -->
+    
+    <!-- Drawing Canvas Modal -->
+    
+    <!-- To-Do List Modal -->
+    
+    <!-- Habit Booster Modal -->
+    
+    <!-- Diet Plan Generator Modal -->
+    
+    <!-- Daily Motivation Modal -->
+    <!--<div class="modal" id="motivideoModal" style="display: none;">
+        <div class="modal-content" style="max-width: 800px;">
+            <h2 class="modal-title">
+                <span class="modal-icon">🎬</span>
+                Daily Motivation
+            </h2>
+            <button class="modal-close" onclick="closeModal('motivideo')">&times;</button>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px;">
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    Today's motivational video to inspire your journey
+                </p>
+                <div id="motivationVideoPlayer" style="margin-bottom: 1rem;">
+                    </div>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+                    <i class="fas fa-sync-alt"></i> Video changes daily to keep you inspired
+                </p>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="modal" id="dietplanModal" style="display: none;">
+        <div class="modal-content" style="max-width: 700px;">
+            <h2 class="modal-title">
+                <span class="modal-icon">🥗</span>
+                7-Day Personalized Diet Planner
+            </h2>
+            <button class="modal-close" onclick="closeModal('dietplan')">&times;</button>
+            
+            <div id="dietPlanForm" style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                <h3 style="margin-bottom: 1.5rem;">Tell us about yourself</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <input type="text" id="dietName" placeholder="Your Name" style="padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                    <input type="number" id="dietAge" placeholder="Age" style="padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                    <input type="number" id="dietHeight" placeholder="Height (cm)" style="padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                    <input type="number" id="dietWeight" placeholder="Weight (kg)" style="padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <select id="dietMeals" style="padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                        <option value="">Meals per day</option>
+                        <option value="2">2 meals</option>
+                        <option value="3">3 meals</option>
+                        <option value="4">4 meals</option>
+                        <option value="5">5 meals</option>
+                    </select>
+                    <select id="dietType" style="padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                        <option value="">Diet Type</option>
+                        <option value="veg">Vegetarian</option>
+                        <option value="nonveg">Non-Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                    </select>
+                </div>
+                <input type="text" id="dietAllergies" placeholder="Allergies (optional)" style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem; margin-bottom: 1.5rem;">
+                <button class="btn" onclick="generateDietPlan()" style="width: 100%;"><i class="fas fa-utensils"></i> Generate My 7-Day Plan</button>
+            </div>
+            
+            <div id="dietPlanResult" style="display: none;">
+                <h3 id="dietPlanTitle" style="text-align: center; margin-bottom: 1.5rem;"></h3>
+                <div id="dietDayContent" style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; margin-bottom: 1rem;"></div>
+                <div style="display: flex; justify-content: space-between; gap: 1rem;">
+                    <button class="btn btn-secondary" onclick="changeDietDay(-1)" id="prevDietDay" style="flex: 1;"><i class="fas fa-chevron-left"></i> Previous Day</button>
+                    <button class="btn btn-secondary" onclick="changeDietDay(1)" id="nextDietDay" style="flex: 1;">Next Day <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="habitboosterModal" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">
+                <span class="modal-icon">🔗</span>
+                Habit Booster - Stack Your Habits
+            </h2>
+            <button class="modal-close" onclick="closeModal('habitbooster')">&times;</button>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Build powerful habits by linking new behaviors to existing routines. Complete the sentence below:</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <span style="color: var(--text-primary); font-weight: 600;">After I</span>
+                        <input type="text" id="existingHabit" placeholder="wake up, eat lunch, etc." style="flex: 1; min-width: 200px; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <span style="color: var(--text-primary); font-weight: 600;">I will</span>
+                        <input type="text" id="newHabit" placeholder="meditate for 5 minutes, drink water, etc." style="flex: 1; min-width: 200px; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                    </div>
+                </div>
+                
+                <button class="btn" onclick="saveHabitStack()" style="width: 100%;"><i class="fas fa-save"></i> Save Habit Stack</button>
+            </div>
+            
+            <div id="habitStackList" style="display: flex; flex-direction: column; gap: 1rem;">
+                <h3 style="margin-bottom: 1rem;">Your Habit Stacks</h3>
+                <div id="habitStacks">
+                    <!-- Saved habit stacks will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="todolistModal" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">
+                <span class="modal-icon">✅</span>
+                Daily To-Do List
+            </h2>
+            <button class="modal-close" onclick="closeModal('todolist')">&times;</button>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px;">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                    <input type="text" id="newTodoInput" placeholder="Add a new task..." style="flex: 1; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-primary); font-size: 1rem;">
+                    <button class="btn" onclick="addTodoTask()" style="white-space: nowrap;"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                
+                <div id="todoList" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Tasks will be added here -->
+                </div>
+                
+                <div id="todoStatus" style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 10px; text-align: center; display: none;">
+                    <!-- Status message will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="drawingcanvasModal" style="display: none;">
+        <div class="modal-content" style="max-width: 900px;">
+            <h2 class="modal-title">
+                <span class="modal-icon">🎨</span>
+                Emotional Expression Canvas
+            </h2>
+            <button class="modal-close" onclick="closeModal('drawingcanvas')">&times;</button>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                    <button class="btn btn-secondary" onclick="setDrawingTool('brush')" style="flex: 1; min-width: 120px;"><i class="fas fa-paintbrush"></i> Brush</button>
+                    <button class="btn btn-secondary" onclick="setDrawingTool('eraser')" style="flex: 1; min-width: 120px;"><i class="fas fa-eraser"></i> Eraser</button>
+                    <input type="color" id="colorPicker" value="#BC13FE" onchange="setDrawingColor(this.value)" style="padding: 0.5rem; border: none; border-radius: 10px; cursor: pointer;">
+                    <input type="range" id="brushSize" min="1" max="20" value="5" onchange="setBrushSize(this.value)" style="flex: 1; min-width: 150px;">
+                    <button class="btn btn-secondary" onclick="clearCanvas()" style="flex: 1; min-width: 120px;"><i class="fas fa-trash"></i> Clear</button>
+                    <button class="btn" onclick="saveDrawing()" style="flex: 1; min-width: 120px;"><i class="fas fa-save"></i> Save</button>
+                </div>
+                <canvas id="drawingCanvas" width="800" height="500" style="border: 2px solid var(--glass-border); border-radius: 15px; background: white; cursor: crosshair; width: 100%; height: auto; display: block;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="moodmusicModal" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">
+                <span class="modal-icon">🎵</span>
+                Mood-to-Music
+            </h2>
+            <button class="modal-close" onclick="closeModal('moodmusic')">&times;</button>
+            
+            <div class="mood-music-container">
+                <h3 style="margin-bottom: 1.5rem;">How are you feeling right now?</h3>
+                <select id="moodSelect" class="mood-dropdown" onchange="selectMood(this.value)">
+                    <option value="">Select your mood...</option>
+                    <option value="happy">😊 Happy - Feeling joyful and energetic</option>
+                    <option value="sad">😢 Sad - Feeling down or melancholic</option>
+                    <option value="stressed">😰 Stressed - Feeling anxious or overwhelmed</option>
+                    <option value="angry">😠 Angry - Feeling frustrated or irritated</option>
+                    <option value="lonely">😔 Lonely - Feeling isolated or disconnected</option>
+                    <option value="tired">😴 Tired - Feeling exhausted or drained</option>
+                    <option value="energetic">⚡ Energetic - Feeling pumped and motivated</option>
+                </select>
+                
+                <div id="moodMusicResult" style="display: none; margin-top: 2rem;">
+                    <div id="musicPlayer" style="margin-bottom: 2rem;"></div>
+                    <div id="activitySuggestions" class="activity-suggestions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+/* Universal modal close handler — closes modals whether they were shown via class 'active' or inline style.display */
+(function(){
+  function hideModalElement(modal){
+    if(!modal) return;
+    // If modal was dynamically created and appended without id, handle removal
+    if(modal.parentElement && modal.parentElement.tagName === 'BODY' && modal.classList.contains('modal') && modal.classList.contains('active') && modal.querySelector('.modal-content') && modal.dataset.dynamic === 'true'){
+      // remove entirely if it was marked dynamic (some modals appended dynamically)
+      modal.remove();
+      return;
+    }
+    try {
+      modal.classList.remove('active');
+    } catch(e){}
+    try {
+      modal.style.display = 'none';
+    } catch(e){}
+  }
+
+  // Close when clicking the overlay (works for static and dynamic modals)
+  document.addEventListener('click', function(e){
+    // if the click target is the overlay itself (the element with class 'modal'), close it
+    if(e.target && e.target.classList && e.target.classList.contains('modal')){
+      hideModalElement(e.target);
+    }
+  }, true); // capture to ensure overlay clicks are caught early
+
+  // Delegate modal-close buttons to close their modal reliably
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest && e.target.closest('.modal-close');
+    if(!btn) return;
+    // Prefer data-modal attribute if present
+    const modalId = btn.getAttribute('data-modal');
+    if(modalId){
+      const modal = document.getElementById(modalId);
+      if(modal) { hideModalElement(modal); return; }
+    }
+    // Otherwise find nearest ancestor with class 'modal'
+    const modalAncestor = btn.closest('.modal');
+    if(modalAncestor){
+      hideModalElement(modalAncestor);
+      return;
+    }
+    // If still not found, try to infer id from inline onclick handlers like closeModal('name')
+    // (This helps where buttons call closeModal('motivideo') etc.)
+    const onclick = btn.getAttribute('onclick');
+    if(onclick){
+      // extract the first string argument inside the parentheses
+      const match = onclick.match(/closeModal\(['"]?([^'")]+)['"]?\)/);
+      if(match && match[1]){
+        const inferred = document.getElementById(match[1] + 'Modal');
+        if(inferred){
+          hideModalElement(inferred);
+          return;
+        }
+      }
+    }
+    // As a last resort, if the button is inside a modal-content but modal isn't ancestor, search document for visible modals and hide them
+    document.querySelectorAll('.modal').forEach(m => {
+      if(m.classList.contains('active') || (m.style && m.style.display && m.style.display !== 'none')) hideModalElement(m);
+    });
+  }, true);
+
+  // Make openFeatureModal/closeModal functions consistent with the universal handler
+  window.openFeatureModal = function(feature){
+    const modal = document.getElementById(feature + 'Modal');
+    if(modal){
+      modal.classList.add('active');
+      modal.style.display = 'flex';
+      // mark as not dynamic
+      modal.dataset.dynamic = 'false';
+      // initialize feature-specific functions if they exist elsewhere
+      if(typeof window.initDrawingCanvas === 'function' && feature === 'drawingcanvas') setTimeout(initDrawingCanvas, 100);
+      if(feature === 'todolist' && typeof window.renderTodoList === 'function') renderTodoList();
+      if(feature === 'habitbooster' && typeof window.renderHabitStacks === 'function') renderHabitStacks();
+      if(feature === 'motivideo' && typeof window.startMotivationRotation === 'function') setTimeout(startMotivationRotation, 100);
+    }
+  };
+
+  window.closeModal = function(feature){
+    const modal = document.getElementById(feature + 'Modal');
+    if(modal){
+      hideModalElement(modal);
+      // cleanup feature-specific if needed
+      if(feature === 'motivideo' && typeof window.stopMotivationRotation === 'function') stopMotivationRotation();
+    }
+  };
+
+  // For modals created dynamically (like viewReport) mark them so they can be removed entirely when closed by overlay or close button
+  const originalAppend = Document.prototype.appendChild;
+  Document.prototype.appendChild = function(child){
+    // If a modal is appended directly to body and has class 'modal', mark as dynamic
+    try {
+      if(child && child.classList && child.classList.contains && child.classList.contains('modal') && this === document){
+        child.dataset.dynamic = 'true';
+        // ensure clicking overlay works for dynamically added modals (they are already covered by document listener)
+      }
+    } catch(e){}
+    return originalAppend.call(this, child);
+  };
+})();
+</script>
+
+
+    <!-- Health Quiz Modal -->
+    <div class="modal" id="healthQuizModal" style="display: none;">
+        <div class="modal-content quiz-modal-content">
+            <button class="modal-close" onclick="closeHealthQuiz()">&times;</button>
+            
+            <!-- Name Input Screen -->
+            <div id="quizNameScreen" class="quiz-name-screen">
+                <h2 class="modal-title">Welcome to Your Health Journey</h2>
+                <p style="color: var(--text-secondary); margin: 1rem 0;">Let's get to know you better</p>
+                <input type="text" id="quizUserName" class="quiz-name-input" placeholder="Enter your name" />
+                <button class="btn" onclick="startQuiz()" style="margin-top: 1rem;">Start Quiz</button>
+            </div>
+
+            <!-- Quiz Questions Screens -->
+            <div id="quizQuestionsContainer"></div>
+
+            <!-- Results Screen -->
+            <div id="quizResults" class="quiz-results">
+                <h3>Hey <span id="resultUserName"></span>!</h3>
+                <p style="color: var(--text-secondary); margin: 1.5rem 0;">Based on your responses, here are the top features we recommend for you to explore in Healthara:</p>
+                <div class="quiz-recommendations">
+                    <h4>Your Personalized Recommendations</h4>
+                    <ul id="recommendationsList"></ul>
+                </div>
+                <p style="color: var(--text-secondary); margin-top: 1.5rem; font-size: 0.9rem;">These features match your current emotional and physical needs and will support you in progressing gently and steadily 💛</p>
+                <button class="btn" onclick="closeHealthQuiz()" style="margin-top: 2rem;">Get Started</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
