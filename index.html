@@ -9029,11 +9029,9 @@
         </div>
     </div>
 <script type="module">
-  // Import Firebase core
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-  
-  // Import Realtime Database
-  import { getDatabase } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
   // Your Firebase configuration
   const firebaseConfig = {
@@ -9048,6 +9046,7 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
   // Initialize Database
   const db = getDatabase(app);
