@@ -565,6 +565,14 @@
             margin-bottom: 2rem;
         }
 
+        .goog-te-gadget {
+            font-size: 0px;
+        }
+
+        .goog-te-combo {
+            font-size: 14px;
+        }
+
         .progress-card {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -3447,8 +3455,8 @@
             <!-- Login Form -->
             <form class="auth-form active" id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    <label for="loginEmail">Username</label>
+                    <input type="text" id="loginEmail" placeholder="Enter your username" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
@@ -3483,7 +3491,8 @@
                 <div class="form-options">
                     <div class="remember-me">
                         <input type="checkbox" id="agreeTerms">
-                        <label for="agreeTerms">I agree to the terms and conditions</label>
+                        <label for="agreeTerms">I consent to share my health data, including medical information,
+                             progress, and app usage, with my school for monitoring and support purposes.</label>
                     </div>
                 </div>
                 <button type="submit" class="btn">Sign Up</button>
@@ -3502,6 +3511,7 @@
                 <button class="logout-btn" id="logoutBtn">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
+                <div id="google_translate_element"></div>
             </div>
         </header>
 
@@ -5166,123 +5176,131 @@
         }
 
         // Authentication Functions
-        function handleLogin(e) {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            // Check if user exists in localStorage
-            const userData = localStorage.getItem(`healthara_${email}`);
-            
-            if (userData) {
-                const user = JSON.parse(userData);
-                
-                // Verify password (in a real app, you'd use proper password hashing)
-                if (user.password === password) {
-                    // Set user state
-                    appState.user = {
-                        email: email,
-                        name: user.name,
-                        username: user.username
-                    };
-                    
-                    // Update UI
-                    userName.textContent = user.name;
-                    userAvatar.textContent = user.name.charAt(0).toUpperCase();
-                    greetingName.textContent = user.name;
-                    
-                    // Load user data
-                    loadUserData();
-                    
-                    // Switch to app
-                    authContainer.classList.remove('active');
-                    appContainer.classList.add('active');
-                    
-                    // Show welcome toast
-                    showToast(`Welcome back, ${user.name}!`, 'success');
-                } else {
-                    showToast('Invalid email or password', 'error');
-                }
-            } else {
-                showToast('No account found with this email. Please sign up first.', 'error');
-            }
-        }
+        function getUsers() {
+    const users = localStorage.getItem('healthara_users');
+    return users ? JSON.parse(users) : [];
+}
 
-        function handleSignup(e) {
-            e.preventDefault();
-            const username = document.getElementById('signupUsername').value.trim();
-            const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const agreeTerms = document.getElementById('agreeTerms').checked;
-            
-            // Validation
-            if (!username) {
-                showToast('Please enter a username', 'error');
-                return;
-            }
-            
-            if (password.length < 6) {
-                showToast('Password must be at least 6 characters', 'error');
-                return;
-            }
-            
-            if (password !== confirmPassword) {
-                showToast('Passwords do not match', 'error');
-                return;
-            }
-            
-            if (!agreeTerms) {
-                showToast('Please agree to the terms and conditions', 'error');
-                return;
-            }
-            
-            // Generate email
-            const email = `${username}@email.com`;
-            
-            // Check if user already exists
-            const existingUser = localStorage.getItem(`healthara_${email}`);
-            if (existingUser) {
-                showToast('An account with this username already exists', 'error');
-                return;
-            }
-            
-            // Create user account
-            const formattedName = username.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-            
-            const userAccount = {
-                email: email,
-                username: username,
-                name: formattedName,
-                password: password, // In a real app, this should be hashed
-                createdAt: new Date().toISOString()
-            };
-            
-            // Save user account
-            localStorage.setItem(`healthara_${email}`, JSON.stringify(userAccount));
-            
-            // Set user state
-            appState.user = {
-                email: email,
-                name: formattedName,
-                username: username
-            };
-            
-            // Update UI
-            userName.textContent = formattedName;
-            userAvatar.textContent = formattedName.charAt(0).toUpperCase();
-            greetingName.textContent = formattedName;
-            
-            // Initialize user data
-            initializeUserData();
-            
-            // Switch to app
-            authContainer.classList.remove('active');
-            appContainer.classList.add('active');
-            
-            // Show welcome toast
-            showToast(`Account created successfully! Welcome, ${formattedName}!`, 'success');
-        }
+function saveUsers(users) {
+    localStorage.setItem('healthara_users', JSON.stringify(users));
+}
 
+function addUser(name, email, password) {
+    const users = getUsers();
+
+    if (users.some(user => user.email === email)) {
+        return false;
+    }
+
+    users.push({
+        name,
+        email,
+        password,
+        createdAt: new Date().toISOString()
+    });
+
+    saveUsers(users);
+    return true;
+}
+
+function authenticateUser(email, password) {
+    const users = getUsers();
+    return users.find(user => user.email === email && user.password === password);
+}
+function handleSignup(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('signupUsername').value.trim();
+    const password = document.getElementById('signupPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const agreeTerms = document.getElementById('agreeTerms').checked;
+
+    if (!username) {
+        showToast('Please enter a username', 'error');
+        return;
+    }
+
+    if (password.length < 6) {
+        showToast('Password must be at least 6 characters', 'error');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        showToast('Passwords do not match', 'error');
+        return;
+    }
+
+    if (!agreeTerms) {
+        showToast('Please agree to the terms', 'error');
+        return;
+    }
+
+    // SAME STRUCTURE AS YOUR WORKING APP
+    const email = `${username.toLowerCase()}@healthara.com`;
+
+    const success = addUser(username, email, password);
+
+    if (!success) {
+        showToast('User already exists', 'error');
+        return;
+    }
+
+    localStorage.setItem('healthara_current_user', JSON.stringify({
+        name: username,
+        email: email
+    }));
+
+    appState.user = {
+        name: username,
+        email: email
+    };
+
+    userName.textContent = username;
+    userAvatar.textContent = username.charAt(0).toUpperCase();
+    greetingName.textContent = username;
+
+    initializeUserData();
+
+    authContainer.classList.remove('active');
+    appContainer.classList.add('active');
+
+    showToast(`Account created successfully! Welcome, ${username}!`, 'success');
+}
+function handleLogin(e) {
+    e.preventDefault();
+
+    const input = document.getElementById('loginEmail').value.trim().toLowerCase();
+    const password = document.getElementById('loginPassword').value;
+
+    if (!input || !password) {
+        showToast('Please enter username and password', 'error');
+        return;
+    }
+
+    const email = `${input}@healthara.com`;
+
+    const user = authenticateUser(email, password);
+
+    if (!user) {
+        showToast('Invalid username or password', 'error');
+        return;
+    }
+
+    localStorage.setItem('healthara_current_user', JSON.stringify(user));
+
+    appState.user = user;
+
+    userName.textContent = user.name;
+    userAvatar.textContent = user.name.charAt(0).toUpperCase();
+    greetingName.textContent = user.name;
+
+    loadUserData();
+
+    authContainer.classList.remove('active');
+    appContainer.classList.add('active');
+
+    showToast(`Welcome back, ${user.name}!`, 'success');
+}
         function handleGuestLogin() {
             // Set guest user state
             appState.user = {
@@ -9053,5 +9071,15 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 
   console.log("Firebase Connected Successfully ✅");
 </script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {pageLanguage: 'en'},
+    'google_translate_element'
+  );
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
