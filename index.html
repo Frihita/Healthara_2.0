@@ -565,14 +565,6 @@
             margin-bottom: 2rem;
         }
 
-        .goog-te-gadget {
-            font-size: 0px;
-        }
-
-        .goog-te-combo {
-            font-size: 14px;
-        }
-
         .progress-card {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -3427,6 +3419,18 @@
     </style>
 </head>
 <body>
+        <!-- Google Translate Widget -->
+        <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 9999;"></div>
+        <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,es,fr,de,zh-CN', // Add more language codes as needed
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Splash Screen -->
     <div class="splash-screen" id="splashScreen">
         <div class="desert-ripple">
@@ -3455,8 +3459,8 @@
             <!-- Login Form -->
             <form class="auth-form active" id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">Username</label>
-                    <input type="text" id="loginEmail" placeholder="Enter your username" required>
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
@@ -3491,8 +3495,7 @@
                 <div class="form-options">
                     <div class="remember-me">
                         <input type="checkbox" id="agreeTerms">
-                        <label for="agreeTerms">I consent to share my health data, including medical information,
-                             progress, and app usage, with my school for monitoring and support purposes.</label>
+                        <label for="agreeTerms">I agree to the terms and conditions</label>
                     </div>
                 </div>
                 <button type="submit" class="btn">Sign Up</button>
@@ -3511,7 +3514,6 @@
                 <button class="logout-btn" id="logoutBtn">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
-                <div id="google_translate_element"></div>
             </div>
         </header>
 
@@ -3525,6 +3527,7 @@
                 <button class="nav-tab" data-tab="gamecenter">Game Center</button>
                 <button class="nav-tab" data-tab="settings">Settings</button>
                 <button class="nav-tab" data-tab="aboutteam">About the Team</button>
+                <button class="nav-tab" data-tab="reviews">Reviews</button>
             </div>
         </nav>
 
@@ -3979,13 +3982,13 @@
                     <!-- Fiona's Card -->
                     <div style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--glass-border); box-shadow: var(--card-shadow); display: flex; flex-direction: column; align-items: center;">
                         <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; border: 3px solid transparent; background: linear-gradient(90deg, #BC13FE,#dd24a6); padding: 3px; margin-bottom: 1.5rem;">
-    <img src="fiona.jpeg" alt="Fiona Sachdeva" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    <img src="suhani.jpeg" alt="Suhani Agarwal" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
 </div>
 
-                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(90deg, #BC13FE, #00FFFF); -webkit-background-clip: text; background-clip: text; color: transparent;">Fiona Sachdeva</h3>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(90deg, #BC13FE, #00FFFF); -webkit-background-clip: text; background-clip: text; color: transparent;">Suhani Agarwal</h3>
                         <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.5rem; font-weight: 500;">Co-Founder & Lead Developer</p>
                         <p style="color: var(--text-secondary); line-height: 1.8; text-align: justify; font-size: 0.95rem;">
-                            I'm Fiona Sachdeva, a student driven by a genuine passion for coding, creativity, and building technology solutions that create real social impact. What began as simple curiosity has evolved into a purposeful journey of developing meaningful digital projects that make everyday life healthier, safer, and more connected. I work with Python, HTML, CSS, JavaScript, and I am currently exploring C++ to strengthen my problem-solving skills and deepen my understanding of core programming principles. I frequently design and code in environments such as VS Code, Jupyter Notebook, Scratch, Thunkable, MIT App Inventor, CodePen, Canva, Adobe Express, Figma, and Python IDLE, which help me bring ideas to life.
+                            I'm Suhani Agarwal, a student driven by a genuine passion for coding, creativity, and building technology solutions that create real social impact. What began as simple curiosity has evolved into a purposeful journey of developing meaningful digital projects that make everyday life healthier, safer, and more connected. I work with Python, HTML, CSS, JavaScript, and I am currently exploring C++ to strengthen my problem-solving skills and deepen my understanding of core programming principles. I frequently design and code in environments such as VS Code, Jupyter Notebook, Scratch, Thunkable, MIT App Inventor, CodePen, Canva, Adobe Express, Figma, and Python IDLE, which help me bring ideas to life.
                             <br><br>
                             I have developed several socially driven applications focused on real-world needs. Namaste AI, an AI-powered cultural learning platform, won a National-Level Innovation Competition organized by STEMROBO for its engaging approach to cultural awareness. Healthara, my AI-based wellness app, promotes physical and mental wellbeing through personalized, accessible guidance. Mitti encourages environmental responsibility through mindful daily actions, and SheSafe empowers women's safety through smart and accessible protection features. Additionally, projects like Seikai have allowed me to explore innovation and refine my practical thinking.
                             <br><br>
@@ -4023,7 +4026,7 @@
                 
                 <div class="team-mission" style="background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 20px; padding: 2rem; border: 1px solid var(--glass-border); box-shadow: var(--card-shadow); text-align: center;">
                     <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);">
-                        Together, Fiona and Arhita are passionate young innovators who aim to create technology that supports both mental and physical well-being. Their vision is to make wellness feel gentle, accessible, and meaningful for everyone through the power of innovation and empathy.
+                        Together, Suhani and Arhita are passionate young innovators who aim to create technology that supports both mental and physical well-being. Their vision is to make wellness feel gentle, accessible, and meaningful for everyone through the power of innovation and empathy.
                     </p>
                 </div>
             </div>
@@ -4146,6 +4149,21 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="content-section" id="reviews">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <h2 class="section-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 0.75rem; background: linear-gradient(90deg, #BC13FE, #dd24a6); -webkit-background-clip: text; background-clip: text; color: transparent;">Reviews</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Share your experience with Healthara.</p>
+                <form id="reviewForm" class="settings-card" style="margin-bottom: 2rem;">
+                    <div class="form-group"><label for="reviewName">Your name</label><input id="reviewName" name="name" type="text" maxlength="50" placeholder="Name (optional)"></div>
+                    <div class="form-group"><label for="reviewRating">Rating</label><select id="reviewRating" name="rating" required style="width: 100%; padding: 0.8rem; border-radius: 10px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--text-primary);"><option value="5">★★★★★ — Excellent</option><option value="4">★★★★☆ — Very good</option><option value="3">★★★☆☆ — Good</option><option value="2">★★☆☆☆ — Fair</option><option value="1">★☆☆☆☆ — Needs improvement</option></select></div>
+                    <div class="form-group"><label for="reviewText">Your feedback</label><textarea id="reviewText" name="review" maxlength="1000" required placeholder="What did you think of Healthara?" style="width: 100%; min-height: 120px; resize: vertical; padding: 0.8rem; border-radius: 10px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--text-primary); font: inherit;"></textarea></div>
+                    <button class="btn" type="submit">Post Review</button>
+                </form>
+                <div id="reviewsList" aria-live="polite"></div>
             </div>
         </div>
 
@@ -5050,6 +5068,83 @@
         const dailyQuote = document.getElementById('dailyQuote');
         const toastContainer = document.getElementById('toastContainer');
 
+        // Reviews are saved in this browser and rendered as text to keep feedback safe.
+        function initReviews() {
+            const form = document.getElementById('reviewForm');
+            const list = document.getElementById('reviewsList');
+            const storageKey = 'healtharaReviews';
+            if (!form || !list) return;
+
+            const readReviews = () => {
+                try {
+                    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                    return Array.isArray(saved) ? saved : [];
+                } catch (error) {
+                    return [];
+                }
+            };
+
+            const renderReviews = () => {
+                list.replaceChildren();
+                const reviews = readReviews();
+                if (!reviews.length) {
+                    const empty = document.createElement('p');
+                    empty.textContent = 'No reviews yet. Be the first to share your feedback!';
+                    empty.style.cssText = 'text-align:center;color:var(--text-secondary);padding:1.5rem;';
+                    list.appendChild(empty);
+                    return;
+                }
+
+                reviews.forEach(review => {
+                    const card = document.createElement('article');
+                    card.style.cssText = 'background:var(--glass-bg);backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:16px;padding:1.25rem;margin-bottom:1rem;';
+                    const heading = document.createElement('div');
+                    heading.style.cssText = 'display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:0.6rem;';
+                    const author = document.createElement('strong');
+                    author.textContent = review.name || 'Anonymous';
+                    const stars = document.createElement('span');
+                    stars.textContent = '★'.repeat(Math.max(1, Math.min(5, Number(review.rating) || 5))) + '☆'.repeat(5 - Math.max(1, Math.min(5, Number(review.rating) || 5)));
+                    stars.setAttribute('aria-label', `${review.rating} out of 5 stars`);
+                    stars.style.color = '#f5b942';
+                    heading.append(author, stars);
+                    const message = document.createElement('p');
+                    message.textContent = review.text;
+                    message.style.cssText = 'white-space:pre-wrap;line-height:1.6;margin:0;color:var(--text-secondary);';
+                    const date = document.createElement('small');
+                    date.textContent = review.date || '';
+                    date.style.cssText = 'display:block;margin-top:0.75rem;color:var(--text-secondary);';
+                    card.append(heading, message, date);
+                    list.appendChild(card);
+                });
+            };
+
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                const text = document.getElementById('reviewText').value.trim();
+                if (!text) return;
+                const nameField = document.getElementById('reviewName');
+                const name = nameField.value.trim() || (userName && userName.textContent.trim() !== 'User' ? userName.textContent.trim() : '');
+                const review = {
+                    name: name.slice(0, 50),
+                    rating: Number(document.getElementById('reviewRating').value),
+                    text: text.slice(0, 1000),
+                    date: new Date().toLocaleDateString()
+                };
+                try {
+                    const reviews = readReviews();
+                    reviews.unshift(review);
+                    localStorage.setItem(storageKey, JSON.stringify(reviews));
+                    renderReviews();
+                    form.reset();
+                    showToast('Thanks for sharing your review!', 'success');
+                } catch (error) {
+                    showToast('Could not save your review in this browser.', 'error');
+                }
+            });
+
+            renderReviews();
+        }
+
         // Initialize App
         function initApp() {
             // Show splash screen for 3 seconds
@@ -5103,6 +5198,7 @@
             navTabs.forEach(tab => {
                 tab.addEventListener('click', () => switchTab(tab.dataset.tab));
             });
+            initReviews();
 
             // Modal Close Buttons
             modalCloseBtns.forEach(btn => {
@@ -5176,131 +5272,123 @@
         }
 
         // Authentication Functions
-        function getUsers() {
-    const users = localStorage.getItem('healthara_users');
-    return users ? JSON.parse(users) : [];
-}
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Check if user exists in localStorage
+            const userData = localStorage.getItem(`healthara_${email}`);
+            
+            if (userData) {
+                const user = JSON.parse(userData);
+                
+                // Verify password (in a real app, you'd use proper password hashing)
+                if (user.password === password) {
+                    // Set user state
+                    appState.user = {
+                        email: email,
+                        name: user.name,
+                        username: user.username
+                    };
+                    
+                    // Update UI
+                    userName.textContent = user.name;
+                    userAvatar.textContent = user.name.charAt(0).toUpperCase();
+                    greetingName.textContent = user.name;
+                    
+                    // Load user data
+                    loadUserData();
+                    
+                    // Switch to app
+                    authContainer.classList.remove('active');
+                    appContainer.classList.add('active');
+                    
+                    // Show welcome toast
+                    showToast(`Welcome back, ${user.name}!`, 'success');
+                } else {
+                    showToast('Invalid email or password', 'error');
+                }
+            } else {
+                showToast('No account found with this email. Please sign up first.', 'error');
+            }
+        }
 
-function saveUsers(users) {
-    localStorage.setItem('healthara_users', JSON.stringify(users));
-}
+        function handleSignup(e) {
+            e.preventDefault();
+            const username = document.getElementById('signupUsername').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            
+            // Validation
+            if (!username) {
+                showToast('Please enter a username', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showToast('Password must be at least 6 characters', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match', 'error');
+                return;
+            }
+            
+            if (!agreeTerms) {
+                showToast('Please agree to the terms and conditions', 'error');
+                return;
+            }
+            
+            // Generate email
+            const email = `${username}@email.com`;
+            
+            // Check if user already exists
+            const existingUser = localStorage.getItem(`healthara_${email}`);
+            if (existingUser) {
+                showToast('An account with this username already exists', 'error');
+                return;
+            }
+            
+            // Create user account
+            const formattedName = username.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            
+            const userAccount = {
+                email: email,
+                username: username,
+                name: formattedName,
+                password: password, // In a real app, this should be hashed
+                createdAt: new Date().toISOString()
+            };
+            
+            // Save user account
+            localStorage.setItem(`healthara_${email}`, JSON.stringify(userAccount));
+            
+            // Set user state
+            appState.user = {
+                email: email,
+                name: formattedName,
+                username: username
+            };
+            
+            // Update UI
+            userName.textContent = formattedName;
+            userAvatar.textContent = formattedName.charAt(0).toUpperCase();
+            greetingName.textContent = formattedName;
+            
+            // Initialize user data
+            initializeUserData();
+            
+            // Switch to app
+            authContainer.classList.remove('active');
+            appContainer.classList.add('active');
+            
+            // Show welcome toast
+            showToast(`Account created successfully! Welcome, ${formattedName}!`, 'success');
+        }
 
-function addUser(name, email, password) {
-    const users = getUsers();
-
-    if (users.some(user => user.email === email)) {
-        return false;
-    }
-
-    users.push({
-        name,
-        email,
-        password,
-        createdAt: new Date().toISOString()
-    });
-
-    saveUsers(users);
-    return true;
-}
-
-function authenticateUser(email, password) {
-    const users = getUsers();
-    return users.find(user => user.email === email && user.password === password);
-}
-function handleSignup(e) {
-    e.preventDefault();
-
-    const username = document.getElementById('signupUsername').value.trim();
-    const password = document.getElementById('signupPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const agreeTerms = document.getElementById('agreeTerms').checked;
-
-    if (!username) {
-        showToast('Please enter a username', 'error');
-        return;
-    }
-
-    if (password.length < 6) {
-        showToast('Password must be at least 6 characters', 'error');
-        return;
-    }
-
-    if (password !== confirmPassword) {
-        showToast('Passwords do not match', 'error');
-        return;
-    }
-
-    if (!agreeTerms) {
-        showToast('Please agree to the terms', 'error');
-        return;
-    }
-
-    // SAME STRUCTURE AS YOUR WORKING APP
-    const email = `${username.toLowerCase()}@healthara.com`;
-
-    const success = addUser(username, email, password);
-
-    if (!success) {
-        showToast('User already exists', 'error');
-        return;
-    }
-
-    localStorage.setItem('healthara_current_user', JSON.stringify({
-        name: username,
-        email: email
-    }));
-
-    appState.user = {
-        name: username,
-        email: email
-    };
-
-    userName.textContent = username;
-    userAvatar.textContent = username.charAt(0).toUpperCase();
-    greetingName.textContent = username;
-
-    initializeUserData();
-
-    authContainer.classList.remove('active');
-    appContainer.classList.add('active');
-
-    showToast(`Account created successfully! Welcome, ${username}!`, 'success');
-}
-function handleLogin(e) {
-    e.preventDefault();
-
-    const input = document.getElementById('loginEmail').value.trim().toLowerCase();
-    const password = document.getElementById('loginPassword').value;
-
-    if (!input || !password) {
-        showToast('Please enter username and password', 'error');
-        return;
-    }
-
-    const email = `${input}@healthara.com`;
-
-    const user = authenticateUser(email, password);
-
-    if (!user) {
-        showToast('Invalid username or password', 'error');
-        return;
-    }
-
-    localStorage.setItem('healthara_current_user', JSON.stringify(user));
-
-    appState.user = user;
-
-    userName.textContent = user.name;
-    userAvatar.textContent = user.name.charAt(0).toUpperCase();
-    greetingName.textContent = user.name;
-
-    loadUserData();
-
-    authContainer.classList.remove('active');
-    appContainer.classList.add('active');
-
-    showToast(`Welcome back, ${user.name}!`, 'success');
-}
         function handleGuestLogin() {
             // Set guest user state
             appState.user = {
@@ -9071,15 +9159,5 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 
   console.log("Firebase Connected Successfully ✅");
 </script>
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement(
-    {pageLanguage: 'en'},
-    'google_translate_element'
-  );
-}
-</script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
